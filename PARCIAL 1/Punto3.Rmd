@@ -1,0 +1,270 @@
+---
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+fontsize: 12pt
+header-includes:
+   - \usepackage{multirow}
+output:
+    pdf_document
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = F, fig.width=8, fig.height=4)
+```
+
+\section{Punto 3.}
+
+**La igualdad entre mujeres y hombres es eficiente.**
+
+Hay distintos estudios que analizan los impactos de la igualdad de género en los mercados.
+Los mecanismos mediante los que dicha igualdad afecta los indicadores económicos son varios, pero los hallazgos tienen en común que los resultados económicos mejoran. A continuación, algunas de las estimaciones.
+
+La conocida estimación de McKinsey Global Institute concluye que de cerrarse las brechas de
+género en la participación económica, en las horas trabajadas y en la productividad, se añadirían 28 billones de dólares al PIB mundial en 2025, lo que equivale a la suma de las economías de Estados Unidos y China.
+
+En el caso particular de América Latina, el PIB podría incrementarse alrededor de un 34% con respecto a lo que se obtendría si se mantuviera la situación actual a 2025. Incluso, bajo un supuesto menos ambicioso, en el que los países cerraran sus brechas al ritmo del país que avanza más rápido en la región, que sería Chile, el PIB se incrementaría en 14 puntos porcentuales para 2025.
+
+Por su parte, Standard & Poor’s (S&P) (2019) estimó que si en Estados Unidos el crecimiento de la tasa de participación de las mujeres en la fuerza laboral se hubiera igualado al de Noruega, de 1970 a 2016 (manteniendo todos los demás factores constantes), la economía de dicho país sería aproximadamente 1,6 billones de dólares más grande de lo que es hoy, lo que a su vez significaría, aproximadamente, $5.000 dólares adicionales por cada hombre, mujer y niña o niño en el país. Esto expresa el potencial que representa un crecimiento responsable construido sobre una base de inclusión.
+
+Haciendo el mismo ejercicio para otros países, esta agencia concluyó que la economía alemana, la cuarta más grande del mundo, sería hoy un 11% mayor; Francia, la séptima economía mundial, sería un 16% más grande, y la tercera economía del globo, Japón, un 14% superior.
+
+Por su parte, en 2014 los países del Grupo de los 20 (G-20) se comprometieron a reducir la brecha en la tasa de actividad entre mujeres y hombres en 25 puntos porcentuales para el año 2025. Las estimaciones indican que el cumplimiento de esta meta significaría generar 189 millones de empleos, lo que equivale a un crecimiento del 5,3% del empleo mundial; 162 millones de estos empleos se crearían en países emergentes debido a su tamaño relativo y al hecho de que en estos países se registran las mayores brechas de género.
+
+En términos económicos, lo anterior se traduciría en un incremento de 3,9 puntos porcentuales del PIB mundial hacia 2025, lo que equivale a un aumento de casi 0,5 puntos porcentuales en el crecimiento promedio del PIB mundial en los siguientes años, un aporte importante, en particular en tiempos que se prevén de crecimiento económico más reducido.
+
+También se ha estimado que un aumento en la tasa de participación femenina que equipare su tasa a la de los hombres en las edades de 14 a 65 años, incrementaría el ingreso de los hogares entre un 3% y un 4% en países como Brasil, México, Uruguay y Colombia, y hasta un 10% en países como El Salvador, Honduras y Nicaragua. Con ello, la pobreza disminuiría desde un punto porcentual en los primeros países, y más de 10 puntos porcentuales en los segundos. Además, si se eliminara la brecha de ingresos, es decir, si se asume que, si mujeres y hombres que tienen la misma experiencia y nivel de preparación recibieran la misma remuneración, la pobreza ser reduciría significativamente en países como Bolivia, Colombia, Nicaragua y Ecuador.
+
+**El nivel educativo no ha sido sufiente para superar la desigualdad en el mercado laboral:**
+
+La situación socioeconómica de las mujeres no se explica necesariamente por su nivel educativo, ya que este, en muchos casos, es superior al de los hombres. Durante las últimas décadas, en la región se ha observado un incremento en el promedio de años de estudio de las mujeres, por lo que hay un mayor acceso a los distintos niveles educativos. Sin embargo, no han sido suficientes para superar las desigualdades de género en el mercado laboral (CEPAL, 2019a).
+
+En el estudio de la CEPAL y la OIT (2019) previamente citado, los datos indican que, en la mayoría de los países de la región, la tasa de participación de las mujeres con escolaridad alta ronda entre el 80% y el 90%; lo que contrasta, notablemente, con la tasa de participación de las mujeres con un nivel educativo bajo (45%), una brecha considerable de casi el doble, que alude a la necesidad de continuar expandiendo los servicios educativos, sobre todo a las mujeres rurales y de los segmentos de mayor pobreza.
+
+Además, del 2000 al 2017 se observó en la región una variación positiva de la tasa de participación de las mujeres con nivel educativo intermedio, como fue el caso de Colombia. Por el contrario, la tasa de participación de las mujeres con nivel educativo alto mostró una leve variación negativa, resultado de lo que se observó en países como Colombia, Chile, Brasil y Argentina. En cuanto a la tasa de participación de las mujeres con nivel educativo bajo, esta se mantuvo relativamente estable en el promedio regional, con decrementos importantes en algunos países, incluyendo Colombia.
+
+De acuerdo con datos de la Gran Encuesta Integrada de Hogares (GEIH) 2018,17 las tasas de participación femenina más altas se observaron entre las mujeres con escolaridad técnica, profesional y tecnológica (80,1%), con escolaridad superior (83,8%) y posgrado (87,5%). Las diferencias son significativas con respecto a las mujeres con menor nivel educativo. Por ejemplo, menos del 40% de las mujeres con escolaridad básica forman parte de la fuerza laboral (ver Gráfica 12). En el caso de los hombres, también hay diferencias importantes entre niveles educativos, pero los niveles de participación económica en todos los casos son mayores a los de las mujeres. Las brechas más grandes entre sexos se presentan en los niveles educativos más bajos: la probabilidad para un hombre sin escolaridad de ser parte de la fuerza laboral es el doble que la de una mujer con igual nivel educativo (69,2% versus 33,5%).
+
+A nivel profesional, las mujeres han incrementado su presencia. No obstante, aún hay sesgos importantes en cuanto a las carreras que eligen, lo cual está condicionado por una serie de estereotipos sexistas que se reproducen a lo largo de la vida. De acuerdo con los registros del Ministerio de Educación y con datos de 2001 a 2018, se observa que en todos los años el número de mujeres que se gradúa es mayor que el de hombres. En 2018, por cada 100 hombres que se graduaron, 127 mujeres lo hicieron.
+
+\newpage
+
+```{r}
+datos3 <- read.table("PAREJAS.txt", header = T)
+```
+
+Se cuenta con un archivo de datos de información de parejas suministrada por el docente, con un total de 149 observaciones y 13 variables, las cuales son:
+
++ OBS: Número de observación.
++ HOM: Hombre.
++ EDADH: Edad del hombre.
++ ESCOLH: Grado de escolaridad del hombre (1,2,3).
++ INGH: ¿El hombre genera ingresos? (Sí:1, No:0).
++ CASARH: ¿El hombre se volvería a casar con su pareja? (Sí:1, No:0).
++ MUJ: Mujer.
++ EDADM: Edad de la mujer.
++ ESCOLM: Grado de escolaridad de la mujer (1,2,3).
++ INGM: ¿La mujer genera ingresos? (Sí:1, No:0).
++ CASARM: ¿La mujer se volvería a casar con su pareja? (Sí:1, No:0).
++ TPOCAS: Años de casados.
++ NHIJOS: Número de hijos de la pareja.
+
+
+A continuación se puede observar las primeras 5 observaciones del archivo de datos:
+
+```{r, warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+knitr::kable(head(datos3,5), format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options=c("scale_down", "hold_position"))
+```
+
+Para iniciar, se realizó un análisis descriptivo para conocer mejor la estructura de los datos.
+
+```{r}
+resumen1 <- data.frame("Variable"= c("Edad", "Escolaridad", "Ingresos", "¿Se casaría?"),
+                      "PromedioH"=c(mean(datos3$EDADH), mean(datos3$ESCOLH),
+                                    mean(datos3$INGH), mean(datos3$CASARH)),
+                      "PromedioM"=c(mean(datos3$EDADM), mean(datos3$ESCOLM),
+                                    mean(datos3$INGM), mean(datos3$CASARM)))
+
+knitr::kable(resumen1, "latex", booktabs = T) %>%
+  kable_styling(latex_options = "hold_position", position = "center")
+```
+
+En promedio, los hombres tienen una edad entre los 43 y 44 años, y las mujeres entre 39 y 40 años. En general, para esta muestra en especifico no existe una diferencia entre el nivel de escolaridad si discriminamos por género. El 94.6% de los hombres generan ingresos en la relación, mientras que el 60.4% de las mujeres también lo hacen. El 83.2% de los hombres se volverían a casar con su pareja, mientras el 74.5% de las mujeres lo harían de nuevo.
+
+```{r}
+resumen2 <- data.frame("Variable"= c("Años casados", "N. Hijos"),
+                       "Promedio"= c(mean(datos3$TPOCAS), mean(datos3$NHIJOS)))
+
+knitr::kable(resumen2, "latex", booktabs = T) %>%
+  kable_styling(latex_options = "hold_position", position = "center")
+```
+
+Las parejas encuestada tienen una media de 15.3 años de casados y entre 2 y 3 hijos.
+
+\newpage
+
+```{r}
+resumen3 <- data.frame("Variable"= c("Edad Hombres","Edad Mujeres","Años casados",
+                                     "N. Hijos"),
+                       "Desv.Estándar"= c(sd(datos3$EDADH), sd(datos3$EDADM),
+                                     sd(datos3$TPOCAS), sd(datos3$NHIJOS)))
+
+knitr::kable(resumen3, "latex", booktabs = T) %>%
+  kable_styling(latex_options = "hold_position", position = "center")
+```
+
+Los datos muestran que las edades tanto de hombres como mujeres tienen una dispersión similar teniendo en cuenta su media. 
+
+\vspace{2cm}
+
+Se analizará como primer elemento el nivel de escolaridad, discriminando por género. La gráfica obtenida se ilustra a continuación.
+
+```{r, warning=FALSE}
+library(ggplot2)
+
+escol <- data.frame("Escolaridad" = as.factor(c(1,2,3,1,2,3)),
+                    "Genero" = c(rep("Hombre",3), rep("Mujer",3)),
+                    "Cantidad" = c(28,52,69,22,64,63)/149)
+
+g1 <- ggplot(data=escol, aes(x=Genero, y=Cantidad, fill=Escolaridad)) +
+  xlab("Género") + ylab("Frecuencia Relativa") +
+  theme(plot.title = element_text(size = rel(2)))
+
+g1 + geom_bar(stat="identity", position=position_dodge()) + 
+  geom_text(aes(label=round(Cantidad,2)), vjust=1.6, color="black", position = position_dodge(0.9), size=4)+
+  scale_fill_manual(values=c('#FFC300', '#FF5733', '#C70039')) +
+  theme(axis.text.x = element_text(angle = -45, vjust = 1, hjust=-0.3)) +
+  theme_linedraw() +                                                      
+  theme(legend.position = "right") +                                    
+  facet_grid(~"Nivel de Escolaridad por Género")
+```
+
+Solo un 19% de hombres y un 15% de mujers poseen un nivel de escolaridad de 1. Un 35% de hombres y un 43% de mujeres poseen un nivel de escolaridad de 2. Y un 46% de hombres y un 42% de mujeres poseen un nivel de escolaridad de 3.
+
+En general, la mayoría de hombres como mujeres poseen un nivel de escolaridad 2 o 3.
+
+```{r}
+ingre <- data.frame("Gen.Ingresos" = as.factor(c("No","Si","No","Si")),
+                    "Genero" = c(rep("Hombre",2), rep("Mujer",2)),
+                    "Cantidad" = c(8,141,59,90)/149)
+
+g2 <- ggplot(data=ingre, aes(x=Genero, y=Cantidad, fill=Gen.Ingresos)) +
+  xlab("Género") + ylab("Frecuencia Relativa") +
+  theme(plot.title = element_text(size = rel(2)))
+
+g2 + geom_bar(stat="identity", position=position_dodge()) + 
+  geom_text(aes(label=round(Cantidad,2)), vjust=1.6, color="black", position = position_dodge(0.9), size=4)+
+  scale_fill_manual(values=c('#FFC300', '#FF5733')) +
+  theme(axis.text.x = element_text(angle = -45, vjust = 1, hjust=-0.3)) +
+  theme_linedraw() +                                                      
+  theme(legend.position = "right") +                                    
+  facet_grid(~"¿Genera ingresos?")
+```
+
+Solo un 5% de hombres no generan ingresos en la relación, en contraposición a las mujeres, donde el 40% no genera ingresos. Esto puede indicar que en géneral, los hombres aportan más de forma económica en las familias entrevistadas.
+
+\vspace{1cm}
+
+```{r}
+casar <- data.frame("Se.Casaria" = as.factor(c("No","Si","No","Si")),
+                    "Genero" = c(rep("Hombre",2), rep("Mujer",2)),
+                    "Cantidad" = c(25,124,38,111)/149)
+
+g3 <- ggplot(data=casar, aes(x=Genero, y=Cantidad, fill=Se.Casaria)) +
+  xlab("Género") + ylab("Frecuencia Relativa") +
+  theme(plot.title = element_text(size = rel(2)))
+
+g3 + geom_bar(stat="identity", position=position_dodge()) + 
+  geom_text(aes(label=round(Cantidad,2)), vjust=1.6, color="black", position = position_dodge(0.9), size=4)+
+  scale_fill_manual(values=c('#FFC300', '#FF5733')) +
+  theme(axis.text.x = element_text(angle = -45, vjust = 1, hjust=-0.3)) +
+  theme_linedraw() +                                                      
+  theme(legend.position = "right") +                                    
+  facet_grid(~"¿Se volvería a casar con su pareja?")
+```
+
+En ambos casos, la mayoría de personas se volverían a casar con su pareja.
+El 27% de la mujeres no se volverían a casar con su pareja, en comparación con los hombres, donde el 17% no lo volvería a hacer. Es decir, en esta base de datos, las mujeres poseen un 10% más de probabilidad de no desear volver a casarse con su pareja en comparación con los hombres.
+
+Para finalizar, se realizaron algunas pruebas usando LRT para comparar proporciones de ambas poblaciones (Hombres y Mujeres).
+
+Se quiere ver si el hecho de generar ingresos es el mismo para hombres y mujeres. El juego de hipótesis es el siguiente:
+
+$$H_0: \text{La proporción de hombres que generan ingresos es igual al de las mujeres}$$
+
+$$H_a: \text{La proporción de hombres que generan ingresos es diferente al de las mujeres}$$
+En resumen, se tiene:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|cc|}
+\cline{2-3}
+\textbf{}                              & \multicolumn{2}{c|}{\textbf{Genera Ingresos}} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Género}}  & \textbf{Si}           & \textbf{No}           \\ \hline
+\multicolumn{1}{|c|}{\textbf{Hombres}} & 141                   & 8                     \\
+\multicolumn{1}{|c|}{\textbf{Mujeres}} & 90                    & 59                    \\ \hline
+\end{tabular}
+\end{table}
+
+Para la prueba, se empleó el código dado en las diapositivas de la clase 6. Los resultados se muestran a continuación:
+
+```{r}
+dif.prop.LRT <-function(x1,n1,x2,n2,nivel=0.05){
+  if(x1==0) x1<-0.5
+  p1<-x1/n1
+  if(x2==0) x2<-0.5
+  p2<-x2/n2
+  n<-n1+n2
+  p.p<-(x1+x2)/n
+  G2<-2*log(p1^x1*(1-p1)^(n1-x1)*p2^x2*(1-p2)^(n2-x2)/(p.p^(x1+x2)*(1-p.p)^(n-x1-x2)))
+  valor.p<-pchisq(G2,1,lower.tail=F)
+  dif.prop<-p1-p2
+  list(p1=p1,p2=p2,dif.prop=dif.prop,G2=G2,valor.p=valor.p)
+}
+
+ans1 <- dif.prop.LRT(141,149,90,149)
+
+ans1_data <- data.frame("Estadístico" = c("dif.prop", "G2", "ValorP"),
+                        "Valor" = as.factor(c(0.3422819, 55.22644, 1.074141e-13)))
+
+knitr::kable(ans1_data, "latex", booktabs = T) %>%
+  kable_styling(latex_options = "hold_position", position = "center")
+```
+
+Con una significacia de $\alpha=0.05 < \text{ValorP}=1.07e^{-13}$, se puede decir que se cuenta con la suficiente información muestral para rechazar $H_0$. Es decir, si existe una diferencia entre la proporción de hombres que generan ingresos con las mujeres.
+
+De igual manera, se comprobará si la proporción de hombres que volverían a casarse con su pareja es la misma que la de las mujeres:
+
+$$H_0: \text{La proporción de hombres que se volverian a casar es igual al de las mujeres}$$
+$$H_0: \text{La proporción de hombres que se volverian a casar es igual al de las mujeres}$$
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|cc|}
+\cline{2-3}
+\textbf{}                              & \multicolumn{2}{c|}{\textbf{Se volvería a casar}} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Género}}  & \textbf{Si}             & \textbf{No}             \\ \hline
+\multicolumn{1}{|c|}{\textbf{Hombres}} & 124                     & 25                      \\
+\multicolumn{1}{|c|}{\textbf{Mujeres}} & 111                     & 38                      \\ \hline
+\end{tabular}
+\end{table}
+
+```{r}
+ans2 <- dif.prop.LRT(124,149,111,149)
+
+ans2_data <- data.frame("Estadístico" = c("dif.prop", "G2", "ValorP"),
+                        "Valor" = as.factor(c(0.08724832, 3.421425, 0.06435545)))
+
+knitr::kable(ans2_data, "latex", booktabs = T) %>%
+  kable_styling(latex_options = "hold_position", position = "center")
+```
+
+Con una significacia de $\alpha=0.05 > \text{ValorP}=0.064$, se puede decir que no se cuenta con la suficiente información muestral para rechazar $H_0$. Es decir, no si existe una diferencia estadística entre la proporción de hombres y mujeres que se volverian a casar con su pareja.
+
+
+
+
+
+

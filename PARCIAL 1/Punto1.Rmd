@@ -1,0 +1,188 @@
+---
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+fontsize: 12pt
+header-includes:
+   - \usepackage{multirow}
+   - \usepackage{graphicx}
+output:
+    pdf_document
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = F, fig.width=8, fig.height=4)
+```
+
+\begin{titlepage}  
+\centering
+{\bfseries\LARGE Universidad Nacional de Colombia \par}
+\vspace{1cm}
+{\scshape\Large Facultad de Ciencias \par}
+\vspace{3cm}
+{\scshape\Huge Manejo de Datos Categóricos \par}
+\vspace{3cm}
+{\itshape\Large Parcial 1 \par}
+\vfill
+{\Large Autores: \par}
+{\Large Juan Pablo Martínez Echavarría \\ Valentina Vanegas Castaño \par}
+\vfill
+{\Large Abril 2022 \par}
+\end{titlepage}
+
+\newpage
+
+\section{Punto 1.}
+
+**Objetivo Principal:**
+
+Evaluar si un experto de la bebida Coca-Cola puede diferenciar entre el sabor de esta y la Pepsi (dos bebidas gaseosas azucaradas comúmente reconocidas por tener un sabor "similar"). Haciendo referencia al experimento exacto de Fisher visto en la clase número 3 del curso.
+
+\vspace{0.5cm}
+
+**Coca-Cola:**
+
+La Coca-Cola, es una bebida azucarada gaseosa vendida a nivel mundial en tiendas, restaurantes y máquinas expendedoras en más de doscientos países o territorios. Es el principal producto de The Coca-Cola Company, de origen estadounidense. En un principio, cuando la inventó el farmacéutico John Pemberton, fue concebida como una bebida medicinal patentada, aunque fue adquirida posteriormente por el empresario Asa Griggs Candler, que hizo de la bebida una de las más consumidas del siglo XX, y del siglo XXI.
+
+\vspace{0.2cm}
+
+**Caso Coca-Cola vs Pepsi: Rivalidad histórica:**
+
+La rivalidad histórica de Coca Cola y Pepsi tiene su origen desde que penetraron en el mercado ambas marcas, a finales del siglo XIX, y desde entonces tuvieron sus mesetas comerciales entre el público. Pero lo importante es que, más allá de cuál de las dos mantiene su liderazgo, permanecen muy vigentes en la actualidad como las opciones ideales para acompañar una comida rápida en una reunión con amigos. 
+
+En el caso de Pepsi, se trata de una bebida creada por PepsiCo con características similares a la Coca, con un sabor parecido pero ligeramente menos dulce y con más gas. Surgir después de Coca Cola fue su mayor desafío, porque no le fue fácil situarse a la misma altura en el podio de las preferencias de los consumidores. 
+
+No obstante, existe un público muy fiel de Pepsi, y hasta el día de hoy es una bebida que siguen eligiendo las personas, quizá de forma no tan masiva como su histórico rival, pero logra conservar un cómodo segundo lugar, que por momentos le arrebata el primer puesto.
+
+En el caso de estudio de hoy, estaremos pormenorizando los detalles de la rivalidad histórica entre Coca Cola y Pepsi, quién surgió primero, cuál de las dos marcas ha logrado mayor éxito en el tiempo y qué podemos esperar de estos dos gigantes en el futuro.
+
+\vspace{0.2cm}
+
+**Caso-Coca Cola vs. Pepsi: el origen de las dos compañías:**
+
+Tanto Coca Cola como Pepsi son bebidas azucaradas gaseosas vendidas a nivel mundial, cuyas fórmulas fueron creadas por farmacéuticos y distribuidas como bebidas energizantes para un público que deseaba consumir bebidas fuertes no alcohólicas y que fueran agradables al paladar. Con el tiempo, ambas bebidas alcanzaron gran cuota de mercado y se convirtieron en bebidas altamente sociales.
+
+John Pemberton fue el inventor de la bebida Coca Cola en 1886, en una fórmula a base de hojas de coca y nuez de cola, que en los primeros años contenía cocaína y a partir de 1903 fue reemplazada por cafeína. El farmacéutico empezó a distribuir la bebida como un jarabe para combatir los problemas digestivos y además aportar un poco de energía al cuerpo.
+
+Pemberton advirtió que su bebida podía convertirse en un gran negocio, entonces encargó hacer un logotipo y en 1891 se fundó The Coca Cola Company. De ahí en adelante, la compañía se expande al mundo con gran éxito, llegando la bebida incluso al mercado asiático con un nombre adaptado a los ideogramas chinos que significa “deliciosa felicidad”.
+
+Por su parte Pepsi surgió en 1893 y fue creada por el químico farmacéutico Caleb Bradham, quien recién cinco años después la bautizó con el nombre de Pepsi Cola. Al igual que Coca Cola, Pepsi comenzó a adquirir relevancia entre los consumidores, en especial entre los corredores de carreras de autos, quienes la consideraban una bebida muy rica, refrescante y estimulante.
+
+Sin embargo, en 1927 la empresa se declara en bancarrota luego del brusco descenso del precio del azúcar, cuando su fundador y otros fabricantes compraron el ingrediente en grandes cantidades, a pesar de que no cesaba de subir el precio permanentemente. 
+
+Luego de la quiebra, Roy Megargel formó la empresa Pepsi Cola y compró todos los bienes y la marca registrada a los acreedores, por una suma de 35.000 USD. Si bien en tres ocasiones Coca Cola tuvo la oportunidad de comprar Pepsi Cola, al final declinó la oferta. 
+
+Charles Guth, presidente de Loft Inc, se hizo cargo de la compañía a partir de ese momento, y fue desde ese entonces que la empresa comenzó a competir con fuerza frente a la Coca, buscando incluso modificar la fórmula parcialmente para que se pareciera más a su rival.
+
+\vspace{0.2cm}
+
+**El comienzo de la eterna rivalidad: Coca Cola vs. Pepsi:**
+
+Mientras Coca Cola desarrolló su conocida botella con curvas, se expandió a Europa y firmó contratos con grandes celebridades, Pepsi se fue a la bancarrota por causa de la Primera Guerra Mundial. En 1931 nuevamente cayó en bancarrota, pero logró levantarse rápidamente. Tal es así, que durante la Segunda Guerra Mundial aumentó el número de acciones publicitarias, lo que le permitió vender refrescos en latas.
+
+A partir de la década del 50, Coca Cola comenzó a promocionarse en televisión, en tanto que Pepsi decidió apostar por el rebranding, con el objetivo de mantenerse al mismo nivel de su rival. 
+
+En 1962, Coca Cola lanzó Sprite, una de las marcas de gaseosas más importantes de la compañía. Por su parte, Pepsi se fusionó con Frito Lay para crear Pepsico. Esta fusión le reportó grandes beneficios económicos a Pepsi, llegando a superar a su rival en rentabilidad, por la amplia gama de productos snacks que llegó a comercializar la compañía. En cambio, Coca Cola no fue más allá de la industria de bebidas gaseosas.
+
+Si bien el catálogo de marcas de Coca es más amplio que el de Pepsi, esta última lo compensa con las enormes ventas a nivel mundial de sus aperitivos. Además, aunque Coca sigue siendo líder indiscutible del mercado de bebidas y refrescos, Pepsi obtuvo mayores ingresos gracias a la gran diversidad de productos. 
+
+\vspace{0.5cm}
+
+**Biografía del experto:** 
+
+Daniel Mejia Ortiz, nació en Medellín el 3 de Octubre de 1996, tiene
+25 años y estudió Negocios Internacionales en la Universidad de Medellín. Desde pequeño consume Coca-Cola, según relata, lleva más de 20 años consumiendo esta bebida de manera frecuente.
+
+\vspace{0.5cm}
+
+**Metodología:** 
+
+El experimento consiste en dar a probar 20 muestras de las bebidas mencionadas, 10 de Coca-Cola y 10 Pepsi siguiendo un orden aleatorio. El sujeto ha sido informado de antemano en la forma la cual se evaluará el test, a saber: que se le pedirá que cate 20 muestras de las bebidas, y estas serán 10 de cada tipo en un orden aleatorio determinado por el software R. Su tarea será separar las 20 muestras de bebidas en 2 grupos de 10, estipulando, si es posible, si es Coca-Cola o Pepsi.
+
+Los datos recolectados se muestran en la siguiente tabla:
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|l|c|c|c|c|}
+\cline{1-4} \cline{6-9}
+\textbf{Prueba} & \textbf{Se le da} & \textbf{Decisión} & \textbf{Acierto} & \multicolumn{1}{c|}{}          & \textbf{Prueba} & \textbf{Se le da} & \multicolumn{1}{l|}{\textbf{Decisión}} & \textbf{Acierto} \\ \cline{1-4} \cline{6-9} 
+\textbf{1}      & Coca Cola         & Coca Cola         & Si               & \multicolumn{1}{c|}{}          & \textbf{11}     & Coca Cola         & Coca Cola                              & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{2}      & Pepsi             & Pepsi             & Si               & \multicolumn{1}{c|}{\textbf{}} & \textbf{12}     & Pepsi             & Pepsi                                  & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{3}      & Pepsi             & Pepsi             & Si               & \multicolumn{1}{c|}{\textbf{}} & \textbf{13}     & Pepsi             & Pepsi                                  & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{4}      & Pepsi             & Pepsi             & Si               &                                & \textbf{14}     & Coca Cola         & Pepsi                                  & No               \\ \cline{1-4} \cline{6-9} 
+\textbf{5}      & Coca Cola         & Coca Cola         & Si               &                                & \textbf{15}     & Pepsi             & Coca Cola                              & No               \\ \cline{1-4} \cline{6-9} 
+\textbf{6}      & Coca Cola         & Coca Cola         & Si               &                                & \textbf{16}     & Pepsi             & Pepsi                                  & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{7}      & Coca Cola         & Coca Cola         & Si               &                                & \textbf{17}     & Coca Cola         & Coca Cola                              & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{8}      & Pepsi             & Coca Cola         & No               &                                & \textbf{18}     & Coca Cola         & Coca Cola                              & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{9}      & Pepsi             & Pepsi             & Si               &                                & \textbf{19}     & Pepsi             & Pepsi                                  & Si               \\ \cline{1-4} \cline{6-9} 
+\textbf{10}     & Coca Cola         & Coca Cola         & Si               &                                & \textbf{20}     & Coca Cola         & Pepsi                                  & No               \\ \cline{1-4} \cline{6-9} 
+\end{tabular}%
+}
+\end{table}
+
+Para realizar la prueba exacta de Fisher, la información anterior se resumirá en una tabla 2x2 de la siguiente forma:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|cc|c}
+\cline{2-3}
+\textbf{}                                & \multicolumn{2}{c|}{\textbf{Decisión}}                   & \textbf{}                           \\ \hline
+\multicolumn{1}{|c|}{\textbf{Se le da}}  & \multicolumn{1}{c|}{\textbf{Coca-Cola}} & \textbf{Pepsi} & \multicolumn{1}{c|}{\textbf{Total}} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Coca-Cola}} & $a$                                       & $b$              & \multicolumn{1}{c|}{$k_1=a+b$}         \\
+\multicolumn{1}{|c|}{\textbf{Pepsi}}     & $c$                                       & $d$              & \multicolumn{1}{c|}{$k_2=c+d$}         \\ \hline
+\multicolumn{1}{|c|}{\textbf{Total}}     & $n_1=a+c$                                  & $n_2=b+d$         & \multicolumn{1}{c|}{$N$}              \\ \hline
+\end{tabular}
+\end{table}
+
+Siendo A, B, C y D variables aleatorias con valores observados a, b, c, y d. Bajo este esquema de muestreo sólo una es independiente, se seleccionará A.
+
+La pregunta de interés es la siguiente: 
+
+**¿El experto posee la capacidad de diferenciar la Coca-Cola de la Pepsi?**
+
+\vspace{0.2cm}
+
+Si $\frac{a}{k_1} \text{ y } \frac{c}{k_2}$ son muy diferentes, se puede sospechar que el experto si posee dicha capacidad.
+
+La hipótesis nula será en este caso:
+
+$$H_0: \text{El experto no cuenta con la capacidad de difenciar ambas bebidas}$$
+
+Un dato importante a tener en cuenta, es que por las condiciones del experimento, este sigue un esquema de muestreo hipergeométrico.
+
+Bajo la hipótesis nula, la distribución de A será:
+
+$$P_{H_0}(A=a)= \frac{\binom{n_1}{a} \binom{n_2}{b}}{\binom{N}{k_1}}=
+\frac{\binom{k_1}{a} \binom{k_2}{c}}{\binom{N}{n_1}}$$
+
+para $a=0,1,...,\min(k_1,n_1)$ y $\max(0,k_1+n_1-N) \leq a \leq \min(k_1,n_1)$
+
+$$E[A]=k_1 \frac{n_1}{N} = p\cdot k_1 \text{ ,donde } p=\frac{n_1}{N}$$
+
+Si el número observado es mucho mayor que el valor esperado, supongamos $\geq a_{\alpha}$, esto indicará que el experto si posee la capacidad de difenciar entre Coca-Cola y Pepsi. Aquí $a_{\alpha}$ es el entero más pequeño tal que:
+
+$$P(A \geq a_{\alpha}) \leq \alpha$$
+
+$\alpha$ es el nivel de significancia deseado para probar $H_0$, donde la hipótesis alternativa es:
+
+$$H_a: \text{El experto cuenta con la capacidad de difenciar ambas bebidas}$$
+En resumen:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{c|cc|}
+\cline{2-3}
+\textbf{}                                & \multicolumn{2}{c|}{\textbf{Decisión}} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Se le da}}  & \textbf{Coca-Cola}   & \textbf{Pepsi}  \\ \hline
+\multicolumn{1}{|c|}{\textbf{Coca-Cola}} & 8                    & 2               \\
+\multicolumn{1}{|c|}{\textbf{Pepsi}}     & 2                    & 8               \\ \hline
+\end{tabular}
+\end{table}
+
+Y finalmente, la prueba exacta de fisher aplicada a las hipotesis planteadas y usando los datos suministrados por el experto, da como resultado un P-Valor de 0.02301.
+
+Con una significacia de $\alpha = 0.05 > \text{P-Valor}=0.02301$, se puede decir que se cuenta con la sufiente información muestral para rechazar $H_0$. Es decir, el experto al cual se le realizó el test si posee la capacidad para diferenciar la Coca-Cola de la Pepsi.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+data.test <- matrix(c(8,2,2,8), ncol=2, byrow=T)
+resultado <- fisher.test(data.test)
+```

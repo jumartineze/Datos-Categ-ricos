@@ -1,0 +1,1508 @@
+---
+geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+fontsize: 12pt
+header-includes:
+   - \usepackage{multirow}
+   - \usepackage{graphicx}
+output:
+    pdf_document
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = F, fig.width=8, fig.height=4)
+```
+
+```{r, warning=FALSE}
+#Librerias.
+
+library(ggplot2)
+```
+
+
+\begin{titlepage}  
+\centering
+{\bfseries\LARGE Universidad Nacional de Colombia \par}
+\vspace{1cm}
+{\scshape\Large Facultad de Ciencias \par}
+\vspace{3cm}
+{\scshape\Huge Manejo de Datos Categóricos \par}
+\vspace{3cm}
+{\itshape\Large Taller 1 \\ Prueba Saber ICFES 2017-2 \par}
+\vfill
+{\Large Autores: \par}
+{\Large Juan Pablo Martínez Echavarría \\ Valentina Vanegas Castaño \par}
+\vfill
+{\Large Mayo 2022 \par}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Sobre ICFES}
+El Instituto Colombiano para el Fomento y Evaluación de la Educación Superior (ICFES), es una entidad autónoma vinculada al Ministerio de Educación Nacional de Colombia. Ofrece actividades de evaluación de la educación en todos sus niveles y apoya al Ministerio de Educación en la realización de los exámenes de Estado; además, realiza investigaciones sobre los factores que inciden en la calidad educativa, con la finalidad de ofrecer información para mejorarla. Es la encargada de realizar el reconocido examen Saber 11, que permite el acceso de los estudiantes que se encuentran en su último año de bachillerato a la educación superior.
+
+En el año 2000, teniendo en cuenta el fenómeno mundial de la globalización, el examen de Estado para el ingreso a la educación superior de Colombia transformó su enfoque de contenidos por un enfoque de competencias, idea proveniente del director de ese entonces, José Daniel Bogoya Maldonado.
+
+A partir del año 2005 el ICFES se propuso los siguientes objetivos:
+
+- Servir como un criterio para el Ingreso a la Educación Superior.
+- Informar a los estudiantes acerca de sus competencias en cada una de las áreas evaluadas, con el ánimo de aportar elementos para la orientación de su opción profesional.
+- Apoyar los procesos de autoevaluación y mejoramiento permanente de las instituciones escolares.
+- Constituirse en base e instrumento para el desarrollo de investigaciones y estudios de carácter cultural, social y educativo.
+- Servir de criterio para otorgar beneficios educativos.
+
+En el año 2009, mediante el Decreto 5014 se realizó una reforma estructural del ICFES, con el fin de convertirlo en un organismo autónomo, adscrito al Ministerio de Educación Nacional. Desde entonces se sustituyeron las antiguas "Pruebas ICFES" (como se conocía al examen de undécimo grado de la educación secundaria), así como el antiguo ECAES (examen con el que se evaluaba a los estudiantes de los últimos años de la educación universitaria), y se creó un nuevo sistema de exámenes, las Pruebas Saber, que desde entonces abarcan todo el espectro de la educación en Colombia, desde la educación básica, pasando por la educación media, la educación técnica y tecnóloga hasta la educación superior.
+
+Además, el nombre de la institución fue cambiado, del antiguo Instituto Colombiano para el Fomento de la Educación Superior, a Instituto Colombiano para la Evaluación de la Educación. Sin embargo, las siglas (ICFES) fueron conservadas debido al reconocimiento y prestigio de la institución entre la ciudadanía.
+
+Como entidad vinculada al Estado, posee funciones y deberes necesarias para el desarrollo de la educación. Entre las cuales se encuentran:
+
+- Establecer las metodologías y procedimientos que guían la evaluación externa de la calidad de la educación.
+- Diseñar, implementar, administrar y mantener actualizadas las bases de datos con la información de los resultados alcanzados en las pruebas aplicadas y los factores asociados, de acuerdo con prácticas internacionalmente aceptadas.
+- Realizar, mediante convenios o asociaciones con universidades nacionales y extranjeras, centros de investigación y expertos, estudios e investigaciones en el campo de la evaluación de la calidad de la educación que contemplen aspectos cuantitativos y cualitativos.
+- Impulsar y fortalecer la cultura de la evaluación de la calidad de la educación mediante la difusión de los resultados y de los análisis acerca de los factores que inciden en los mismos, y el desarrollo de actividades de formación en los temas que son de su competencia, en los niveles local, regional y nacional.
+- Propiciar la participación de Colombia en programas y proyectos internacionales en materia de evaluación y establecer relaciones de cooperación con organismos pares, localizados en otros países o regiones.
+- Apoyar al Ministerio de Educación Nacional, por medio de contratos que le permitan cubrir todos sus costos, en la realización de los exámenes de Estado de que trata la Ley 1324 de 2009, y facilitar la monitoría sobre el cumplimiento de los contratos respectivos por parte de los auditores especializados externos que designe el esa entidad.
+- Administrar en forma independiente la información resultante de los "exámenes de Estado", y reportar los resultados a los evaluados, así como al Ministerio de Educación Nacional, a las entidades territoriales, a las instituciones educativas y el público general.
+
+\vspace{1cm}
+
+**Pruebas Saber 11**
+
+Este examen evalúa el grado de desarrollo de las competencias académicas de los estudiantes que están por finalizar el grado undécimo de la educación media. Consta de dos sesiones en las que se realizan cinco pruebas: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés; y un cuestionario socioeconómico. La presentación de este examen es requisito para acceder a la educación superior en Colombia y es utilizado como criterio de admisión por parte de varias universidades.
+
+\vspace{1cm}
+
+Primera sesión:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|cc|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Primera sesión de las Pruebas Saber 11}}               \\ \hline
+\multicolumn{1}{|c|}{\textbf{Pruebas}}              & \textbf{Preguntas por prueba} \\ \hline
+\multicolumn{1}{|c|}{Matemáticas 1}                 & 25                            \\ \hline
+\multicolumn{1}{|c|}{Lectura crítica}               & 41                            \\ \hline
+\multicolumn{1}{|c|}{Sociales y ciudadanas 1}       & 25                            \\ \hline
+\multicolumn{1}{|c|}{Ciencias naturales 1}          & 29                            \\ \hline
+\multicolumn{1}{|c|}{Cuestionario socioeconómico 1} & 11                            \\ \hline
+\end{tabular}
+\end{table}
+
+- Tiempo máximo del examen: 4 horas y 30 minutos.
+- Número de preguntas: 131.
+
+\newpage
+
+Segunda sesión:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|cc|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Segunda sesión de las Pruebas Saber 11}}               \\ \hline
+\multicolumn{1}{|c|}{\textbf{Pruebas}}              & \textbf{Preguntas por prueba} \\ \hline
+\multicolumn{1}{|c|}{Sociales y ciudadanas 2}       & 25                            \\ \hline
+\multicolumn{1}{|c|}{Matemáticas 2}                 & 25                            \\ \hline
+\multicolumn{1}{|c|}{Ciencias naturales 2}          & 29                            \\ \hline
+\multicolumn{1}{|c|}{Inglés}                        & 55                            \\ \hline
+\multicolumn{1}{|c|}{Cuestionario socioeconómico 2} & 13                            \\ \hline
+\end{tabular}
+\end{table}
+
+- Tiempo máximo del examen: 4 horas y 30 minutos.
+- Número de preguntas: 147.
+
+\newpage
+
+\section{Base de datos}
+Se trabajará con la base de datos de las pruebas Saber 11 del año 2017 en su segundo semestre. Dichos datos fueron obtenidos de la página web oficial de ICFES y no se les realizó ninguna modificación.
+
+En total se tienen 82 variables, entre las cuales se encuentran las preguntas realizadas en los cuestionarios socioeconómicos y los puntajes obtenidos en los componentes de la prueba. A continuación se presenta un diccionario de las variables donde se aclara su significado, este fue realizado con ayuda de las fuentes oficiales de ICFES:
+ 
+- **ESTU_TIPODOCUMENTO:** Tipo de documento del estudiante. 
+- **ESTU_NACIONALIDAD:** Nacionalidad (Texto).
+- **ESTU_GENERO:** Género (M:Masculino, F:Femenino).
+- **ESTU_FECHANACIMIENTO:** Fecha de nacimiento ([DD/MM/AAAA]).
+- **PERIODO:** Período de presentación del examen.
+- **ESTU_CONSECUTIVO:** Código consecutivo identificador del inscrito (Texto).
+- **ESTU_ESTUDIANTE:** Indica si el inscrito realizó la inscripción por medio de un colegio (estudiante) o fue de manera particular (individual).
+- **ESTU_PAIS_RESIDE:** País donde reside actualmente.
+- **ESTU_TIENEETNIA:** Pertenece usted a un grupo étnico minoritario? (No, Si)
+- **ESTU_ETNIA:** Tipo de Etnia.
+
+- **ESTU_DEPTO_RESIDE:** Departamento en el que reside.
+- **ESTU_COD_RESIDE_DEPTO:** Código DANE del departamento de residencia (Numérica [99999 extranjero]).
+- **ESTU_MCPIO_RESIDE:** Municipio de Residencia.
+- **ESTU_COD_RESIDE_MCPIO:** Código DANE del municipio de residencia.
+- **FAMI_EDUCACIONPADRE:** Nivel educativo más alto alcanzado por el padre.
+- **FAMI_EDUCACIONMADRE:** Nivel educativo más alto alcanzado por la madre.
+- **FAMI_ESTRATOVIVIENDA:** Estrato socioeconómico de la vivienda según recibo de energía eléctrica. 
+- **FAMI_PERSONASHOGAR:** Número de personas que conforman el hogar donde vive actualmente.
+- **FAMI_CUARTOSHOGAR:** Número de cuartos en los que duermen las personas del hogar. 
+- **FAMI_TIENECOMPUTADOR:** El hogar cuenta con computador (Si o No). 
+
+- **FAMI_TIENELAVADORA:** El hogar cuenta con lavadora (Si o No). 
+- **FAMI_TIENEHORNOMICROOGAS:** El hogar cuenta con microondas (Si o No). 
+- **FAMI_TIENEINTERNET:** El hogar cuenta con internet (Si o No).  
+- **FAMI_TIENESERVICIOTV:** El hogar tiene servicio a TV (Si o No).  
+- **FAMI_TIENEAUTOMOVIL:** El hogar tiene automóvil partícular (Si o No). 
+- **FAMI_TIENEMOTOCICLETA:** El hogar tiene motocicleta (Si o No). 
+- **FAMI_TIENECONSOLAVIDEOJUEGOS:** El hogar tiene consola de video juegos (Si o No). 
+- **FAMI_NUMLIBROS:** Cuántos libros tiene el hogar. 
+- **FAMI_COMELECHEDERIVADOS:** Cuántas veces por semana se consume leche o derivados en el hogar.
+- **FAMI_COMECARNEPESCADOHUEVO:** Cuántas veces por semana se consume carne, pescado o huevos en el hogar.
+
+- **FAMI_COMECEREALFRUTOSLEGUMBRE:** Cuántas veces por semana se consume cereal, frutos o legumbres en el hogar.
+- **FAMI_TRABAJOLABORPADRE:** Ocupación u oficio del padre. 
+- **FAMI_TRABAJOLABORMADRE:** Ocupación u oficio de la madre. 
+- **FAMI_SITUACIONECONOMICA:** Con respecto al año inmediatamente anterior, la situación económica de su hogar es: Igual, Mejor o Peor. 
+- **ESTU_DEDICACIONLECTURADIARIA:** ¿Cuánto tiempo al día dedica a leer por entretenimiento?
+- **ESTU_DEDICACIONINTERNET:** ¿Cuánto tiempo al día dedica a navegar en internet? Excluyendo actividades académicas. 
+- **ESTU_HORASSEMANATRABAJA:** ¿Cuántas horas trabajó usted durante la semana pasada? 
+- **ESTU_TIPOREMUNERACION:** ¿Qué tipo de renumeración recibe usted por su trabajo? 
+- **COLE_CODIGO_ICFES:** Código Icfes de la sede-jornada.
+- **COLE_COD_DANE_ESTABLECIMIENTO:** Código Dane del Establecimiento Educativo.
+
+- **COLE_NOMBRE_ESTABLECIMIENTO:** Nombre del Establecimiento.
+- **COLE_GENERO:** Indica el género de la población del Establecimiento.
+- **COLE_NATURALEZA:** Indica la naturaleza del Establecimiento (OFICIAL o NO OFICIAL). 
+- **COLE_CALENDARIO:** Calendario académico del Establecimiento (A, B, OTRO).
+- **COLE_BILINGUE:** ¿El establecimiento es Bilingue? (S=Si o N=No). 
+- **COLE_CARACTER:** Indica el carácter del establecimiento (ACADÉMICO, TÉCNICO, TÉCNICO/ACADÉMICO, NO APLICA). 
+- **COLE_COD_DANE_SEDE:** Código Dane de la sede (Númerica).
+- **COLE_NOMBRE_SEDE:** Nombre de la sede (Texto).
+- **COLE_SEDE_PRINCIPAL:** ¿Esta es la sede principal del Establecimiento Educativo? (N: No, S: Si).
+- **COLE_AREA_UBICACION:** Área de ubicación de la Sede (RURAL o URBANO). 
+
+- **COLE_JORNADA:** Jornada de la Sede (COMPLETA, MAÑANA, NOCHE, SABATINA, TARDE, UNICA).
+- **COLE_COD_MCPIO_UBICACION:** Código DANE del municipio donde está ubicada la Sede.
+- **COLE_MCPIO_UBICACION:** Nombre del municipio donde está ubicada la Sede (Texto).
+- **COLE_COD_DEPTO_UBICACION:** Código DANE del departamento de la Sede (Texto).
+- **COLE_DEPTO_UBICACION:** Nombre del departamento donde está ubicada la Sede (Texto).
+- **ESTU_PRIVADO_LIBERTAD:** ¿Se encuentra privado de la libertad? (N:No, S:Si).
+- **ESTU_COD_MCPIO_PRESENTACION:** Código DANE del municipio de presentación del exmamen (Numérica).
+- **ESTU_MCPIO_PRESENTACION:** Municipio de presentación del examen (Texto).
+- **ESTU_DEPTO_PRESENTACION:** Departamento de presentación del examen (Texto).
+- **ESTU_COD_DEPTO_PRESENTACION:** Código Dane del departamento de presentación del examen (Numérica). 
+
+- **PUNT_LECTURA_CRITICA:** Puntaje en lectura crítica ([0, 100]).
+- **PERCENTIL_LECTURA_CRITICA:** Percentil lectura crítica (Numérica - Rango [1, 100]).
+- **DESEMP_LECTURA_CRITICA:** Desempeño lectura crítica (Numérica - Rango [1, 4]).
+- **PUNT_MATEMATICAS:** Puntaje en matemáticas ([0, 100]).
+- **PERCENTIL_MATEMATICAS:** Percentil matemáticas (Numérica - Rango [1, 100]).
+- **DESEMP_MATEMATICAS:** Desempeño matemáticas (Numérica - Rango [1, 4]).
+- **PUNT_C_NATURALES:** Puntaje en ciencias naturales (Numérica - Rango [0, 100]).
+- **PERCENTIL_C_NATURALES:** Percentil ciencias naturales (Numérica - Rango [1, 100]).
+- **DESEMP_C_NATURALES:** Desempeño ciencias naturales (Numérica - Rango [1-4]).
+- **PUNT_SOCIALES_CIUDADANAS:** Puntaje sociales y ciudadanas (Numérica - Rango [0,100]).
+
+- **PERCENTIL_SOCIALES_CIUDADANAS:** Percentil sociales y ciudadanas (Númerica - Rango [1, 100]).
+- **DESEMP_SOCIALES_CIUDADANAS:** Desempeño en sociales y ciudadanas (Númerica - Rango [1, 4]).
+- **PUNT_INGLES:** Puntaje en inglés (Númerica - Rango [0, 100]).
+- **PERCENTIL_INGLES:** Percentil en inglés (Númerica - Rango [1, 100]).
+- **DESEMP_INGLES:** Desempeño en inglés (A-, A1, A2, B+, B1).
+- **PUNT_GLOBAL:** Puntaje total obtenido (Númerica - Rango [1, 100]).
+- **PERCENTIL_GLOBAL:** Percentil global en que se encuentra el evaluado (Númerica - Rango [1, 100]).
+- **ESTU_INSE_INDIVIDUAL:** Índice socioeconómico del evaluado (Númerica - Rango [1, 100]).
+- **ESTU_NSE_INDIVIDUAL:** Nivel socioeconómico del evaluado (NSE1, NSE2, NSE3, NSE4).
+- **ESTU_NSE_ESTABLECIMIENTO:** Nivel socioeconómico del Establecimiento (Númerica - Rango [1-4]).
+- **ESTU_ESTADOINVESTIGACION:** Identifica el estado de los resultados para los evaluados (PUBLICAR, PRESENTE CON LECTURA TARDIA, VALIDEZ OFICINA JURÍDICA).
+- **ESTU_PILOPAGA:** Identifica si el evaluado cumple con los requisitos necesarios para ser beneficiario del programa Ser Pilo Paga.
+
+
+\section{Análisis Descriptivo}
+Como objetivo principal, se quiere realizar una estratificación de los estudiantes que presentaron las pruebas Saber 11 2017-2. Dicha estratificación se construirá teniendo en cuenta 10 niveles de riqueza, por lo tanto, para este estudio solo se emplearan las variables que tengan una mayor relación con el tópico y que ayuden a definir una situación de riqueza. En total, se tiene que 545839 estudiantes de todo el territorio colombiano presentaron la prueba en el segundo semestre del año 2017.
+
+Dichas variables son:
+
+- ESTU_DEPTO_RESIDE.
+- FAMI_EDUCACIONPADRE.
+- FAMI_EDUCACIONMADRE.
+- FAMI_ESTRATOVIVIENDA.
+- FAMI_TIENECOMPUTADOR.
+- FAMI_TIENELAVADORA.
+- FAMI_TIENEHORNOMICROOGAS.
+- FAMI_TIENEINTERNET.
+- FAMI_TIENESERVICIOTV.
+- FAMI_TIENEAUTOMOVIL.
+- FAMI_TIENEMOTOCICLETA.
+- FAMI_TIENECONSOLAVIDEOJUEGOS.
+- FAMI_NUMLIBROS.
+- FAMI_TRABAJOLABORPADRE.
+- FAMI_TRABAJOLABORMADRE.
+- COLE_NATURALEZA.
+- COLE_BILINGUE.
+- COLE_CARACTER.
+- COLE_AREA_UBICACION.
+- COLE_DEPTO_UBICACION.
+
+```{r}
+#Lectura base de datos.
+
+columns <- c("ESTU_DEPTO_RESIDE","FAMI_EDUCACIONPADRE",
+            "FAMI_EDUCACIONMADRE","FAMI_ESTRATOVIVIENDA","FAMI_TIENECOMPUTADOR",
+            "FAMI_TIENELAVADORA","FAMI_TIENEHORNOMICROOGAS","FAMI_TIENEINTERNET",
+            "FAMI_TIENESERVICIOTV","FAMI_TIENEAUTOMOVIL","FAMI_TIENEMOTOCICLETA",
+            "FAMI_TIENECONSOLAVIDEOJUEGOS","FAMI_NUMLIBROS","FAMI_TRABAJOLABORPADRE",
+            "FAMI_TRABAJOLABORMADRE","COLE_NATURALEZA","COLE_BILINGUE",
+            "COLE_CARACTER","COLE_AREA_UBICACION",
+            "COLE_DEPTO_UBICACION","COLE_NOMBRE_ESTABLECIMIENTO")
+
+icfes <- read.csv("SB11_20172.TXT", sep = "¬", fileEncoding = "UTF-8")
+dataIcfes <- icfes[,columns]
+```
+
+\vspace{0.5cm}
+
+**En qué Departamento reside (ESTU_DEPTO_RESIDE)**
+
+El Índice Departamental de Competitividad (IDC) es una medición anual en la que se evalúan 104 indicadores, repartidos en cuatro bloques fundamentales: condiciones habilitantes, capital humano, eficiencia de los mercados y ecosistema innovador. Permitiendo así evaluari los avances y las brechas a nivel interno y no quedarnos como país solo con las mediciones globales que nos permiten vernos a nivel general como nación.
+
+Esta medición es realizada por el Consejo Privado de Competitividad y la Universidad del Rosario. En la más reciente versión, en noviembre de 2019, hubo un avance importante, pues por primera vez se contó con la evaluación de los 32 departamentos del país; y, además, fueron agrupados en ochos regiones de acuerdo con la clasificación propuesta en el Plan Nacional de Desarrollo 2018-2022. Esto con el fin de proveer nuevas herramientas de análisis en materia de competitividad.
+
+De acuerdo con esta última medición , Bogotá ocupa nuevamente el primer lugar del ranking, con una calificación de 8.30 sobre 10. Le sigue Antioquia, que alcanza una puntuación de 6.71, y a continuación van Santander, Atlántico y Valle del Cauca, con 6.29, 6.14 y 6.07 puntos, respectivamente, como los departamentos más competitivos en el 2019. Este top cinco se repite con frecuencia de un año a otro.
+
+Por su parte, Guainía, Vichada y Vaupés se ubican en los últimos lugares de la clasificación, con puntajes de 2.84, 2.78 y 2.68, respectivamente.
+
+Lo cierto es que la riqueza en Colombia sigue concentrada en pocos departamentos y la brecha social es cada vez más amplia puesto que el crecimiento es desigual. Esto se demuestra fácilmente al ver cómo para 2020 Bogotá, Antioquia y Valle generaron el 50 % del PIB de Colombia.
+
+Esta pregunta tiene como objetivo conocer en que Departamento residen los individuos que presentaron la prueba Saber 11 en 2017-2,  y así de esta forma tener un panorama de cuales son los departamentos dónde viven la mayoria de las personas que presentaron el ICFES en 2017-2, como fue su desempeño por departamento y si el nivel de riqueza y desarrollo del departamento pudo influir en los resultados de la prueba.  
+
+La proporción de residencia de individuos por departamento que presentaron las pruebas saber 11 en el segundo semestre del año 2017, se muestran a continuación:
+
+```{r}
+#Graficos ESTU_DEPTO_RESIDE
+es <- sort(unique(dataIcfes$ESTU_DEPTO_RESIDE))
+es[1] <- "NA"
+propEDR<- as.numeric(prop.table(table(dataIcfes$ESTU_DEPTO_RESIDE)))
+summaryEDR<- data.frame("Respuesta" = es,
+                         "Proporcion" = propEDR)
+
+ggplot(data=summaryEDR, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "purple")+
+  geom_text(aes(label=round(Proporcion,4)), hjust=0, color="black", size=2)+
+  theme_linedraw(base_size = 7)+
+  facet_grid(~"Departamento dónde reside el individuo")+
+  coord_flip()
+```
+
+Aproximadamente el 49.16% de las personas que presentaron la prueba Saber 11 en el segundo semestre del 2017 residen en el Distrito Capital de Bogotá o en alguno de los siguientes departamentos: Antioquia, Valle, Cundinamarca o Atlantico. Estos se distribuyen así:
+
++ Bogotá con un 16.31% del total.
++ Antioquia con un 13.39% del total.
++ Valle con un 7.13% del total.
++ Cundinamarca con un 6.58% del total.
++ Atlántico con un 5.75% del total.
+
+\vspace{0.5cm}
+
+**Nivel educativo más alto alcanzado por el padre (FAMI_EDUCACIONPADRE)**
+
+Esta pregunta se realiza a los encuestados ya que la mayoría en dicha etapa aún dependen económicamente de sus padres. En general, se ha demostrado que a medida que el grado de educación de una persona es mayor, este puede acceder a mejores salarios y a una mejor  calidad de vida en cuanto a lo económico. Es por esto que los ingresos de un hogar van ligados al nivel de estudio alcanzado por las cabezas de familia.
+
+La proporción de residencia de individuos por departamento que presentaron las pruebas saber 11 en el segundo semestre del año 2017, se muestran a continuación:
+
+```{r, fig.width=12, fig.height=4}
+#Graficos FAMI_EDUCACIONPADRE).
+
+ep <- sort(unique(dataIcfes$FAMI_EDUCACIONPADRE))
+ep[1] <- "NA"
+propFEP <- as.numeric(prop.table(table(dataIcfes$FAMI_EDUCACIONPADRE)))
+summaryFEP <- data.frame("Respuesta" = ep,
+                         "Proporcion" = propFEP)
+
+ggplot(data=summaryFEP, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "GREEN3")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Nivel educativo más alto alcanzado por el padre")+
+  coord_flip()
+```
+
+Los 5 niveles de educación más comunes de los padres de los encuestados, son: 
+
++ Bachillerato completo con un 20.6% del total. 
++ Primaria incompleta con un 19.7% del total.
++ Bachillerato incompleto con un 13.9% del total.
++ Primaria completa con un 10.6% del total.
++ Educación profesional completa con un 8.4% del total. 
+
+Solo el 1.7% de los padres de los encuestados alcanzaron estudios de Postgrado, el 3.9% no alcanzaron ningún nivel de estudio y el 40.9% de los padres de los encuestados alcanzaron estudios iguales o superiores al Bachillerato completo .
+
+\vspace{0.5cm}
+
+**Nivel educativo más alto alcanzado porla madre (FAMI_EDUCACIONMADRE)**
+
+Esta pregunta se realiza a los encuestados ya que la mayoría en dicha etapa aún dependen económicamente de sus padres. En general, se ha demostrado que a medida que el grado de educación de una persona es mayor, este puede acceder a mejores salarios y a una mejor  calidad de vida en cuanto a lo económico. Es por esto que los ingresos de un hogar van ligados al nivel de estudio alcanzado por las cabezas de familia.
+
+La proporción de residencia de individuos por departamento que presentaron las pruebas saber 11 en el segundo semestre del año 2017, se muestran a continuación:
+
+```{r, fig.width=12, fig.height=4}
+#Graficos FAMI_EDUCACIONMADRE).
+
+em <- sort(unique(dataIcfes$FAMI_EDUCACIONMADRE))
+em[1] <- "NA"
+propFEM <- as.numeric(prop.table(table(dataIcfes$FAMI_EDUCACIONMADRE)))
+summaryFEM<- data.frame("Respuesta" =  em,
+                         "Proporcion" = propFEM)
+
+ggplot(data=summaryFEM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "darkblue")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Nivel educativo más alto alcanzado por la madre")+
+  coord_flip()
+```
+
+Los 5 niveles de educación más comunes de las madres de los encuestados, son: 
+
++ Bachillerato completo con un 23.6% del total. 
++ Primaria incompleta con un 16% del total.
++ Bachillerato incompleto con un 14.9% del total.
++ Primaria completa con un 11% del total.
++ Educación profesional completa con un 9.4% del total. 
+
+Solo el 1.9% de las madres de los encuestados alcanzaron estudios de Postgrado, el 2.4% no alcanzaron ningún nivel de estudio y el 49.2% de las madres de los encuestados alcanzaron estudios iguales o superiores al Bachillerato completo .
+
+\vspace{0.5cm}
+
+**Estrato socioeconómico de la vivienda (FAMI_ESTRATOVIVIENDA)**
+
+Esta pregunta se realiza con el fin de conocer en que estratificación socioeconómica se encuentran los encuestados. La estratificación socioeconómica es una clasificación en estratos de los inmuebles residenciales que deben recibir servicios públicos. Se realiza principalmente para cobrar de manera diferencial por estratos los servicios públicos domiciliarios permitiendo asignar subsidios y cobrar contribuciones en esta área.
+
+De esta manera, quienes tienen más capacidad económica pagan más por los servicios públicos y contribuyen para que los estratos bajos puedan pagar sus facturas.
+
+```{r, fig.width=12, fig.height=4}
+#Graficos FAMI_ESTRATOVIVIENDA).
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_ESTRATOVIVIENDA)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "Estrato 1", "Estrato 2", "Estrato 3", "Estrato 4", "Estrato 5", "Estrato 6", "Sin Estrato"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "darkgreen")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Estrato socioeconómico de la vivienda según recibo de energía eléctrica")+
+  coord_flip()
+```
+
+La mayoria de los encuestados pertenecen a los estratos 1,2 o 3.
+
++ El 34.6%  del total de los encuestados pertenecen al Estrato 2.
++ El 32%  del total de los encuestados pertenecen al Estrato 1.
++ El 19.2%  del total de los encuestados pertenecen al Estrato 3.
++ Solo un 6.7% de los encuestados pertenecen a los estratos 4, 5 o 6. 
+
+\vspace{0.5cm}
+
+**El hogar cuenta con computador (FAMI_TIENECOMPUTADOR)**
+
+El computador es una herramienta indispensable en la vida de un estudiante, ya que por medio de este se puede tener acceso a programas que fácilitan y aportan de manera significativa al aprendizaje y al desarrollo de las actividades de un estudiante. Sin embargo en Colombia gran parte de la población de estudiantes no cuentan con una computadora por motivos económicos, y la falta de esta puede ser un detonante que dificulte a gran escala el aprendizaje de un estudiante. Es por esto que esta pregunta pretende conocer en cuál es la proporción de individuos que presentaron la Prueba Saber 11 en el año 2017-2 que cuenta con computadora. 
+
+```{r, fig.width=12, fig.height=4}
+#Graficos FAMI_TIENECOMPUTADOR).
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENECOMPUTADOR)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "NO", "SI"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#7BBFC9")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"El hogar cuenta con computador")+
+  coord_flip()
+```
+
+El 58.1% del total de los encuestados tienen en su hogar computador, mientras que el 40.3% no tienen y el 1.6% no respondió.
+
+\vspace{0.5cm}
+
+**El hogar cuenta con lavadora FAMI_TIENELAVADORA)** 
+
+La lavadora se ha convertido en un objeto casi que indispensable en los hogares, ya que esta le facilita el trabajo a las personas, además que ahorra más agua que cuando lavamos a mano. Sin embargo no todas las familias colombianas cuentan con recursos económicos para acceder a una de estas. Esta pregunta nace con el fin de conocer en cuáles de los hogares de los individuos que presentaron la prueba Saber 11 2017-2 cuentan con una lavadora.
+
+El espacio muestral de COLE_BILINGUE está dado por: "SI" "NO" y "NA".
+
+```{r, fig.width=12, fig.height=4}
+#Graficos FAMI_TIENELAVADORA).
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENELAVADORA)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "NO", "SI"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#2F6790")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"El hogar cuenta con lavadora?")+
+  coord_flip()
+```
+
+El 72.8% del total de los encuestados tienen en su hogar lavadora, mientras que el 25.7% no tienen y el 1.5% no respondió.
+
+\vspace{0.5cm}
+
+**El hogar cuenta con microondas? (FAMI_TIENEHORNOMICROOGAS)**
+
+Esta pregunta se realiza con el fin de conocer si el hogar del individuo que presento la prueba Saber 11 en 2017-2 cuenta con horno microondas.
+
+```{r, fig.width=12, fig.height=4}
+#Graficos "FAMI_TIENEHORNOMICROOGAS"
+           
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENEHORNOMICROOGAS)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "NO", "SI"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#00FFFF")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"El hogar cuenta con microondas")+
+  coord_flip()
+```
+
+El 54.4% del total de los encuestados NO tienen en su hogar horno microondas, mientras que el 43.9% si y el 1.7% no respondió.
+
+\vspace{0.5cm}
+
+**El hogar cuenta con internet (FAMI_TIENEINTERNET)**
+
+Esta pregunta se realiza a los encuestados con el fin de conocer si en su hogar cuentan con el servicio de internet. Ya que esta es una herramienta indispensable para los estudiantes y algunos hogares no tienen acceso a este ya sea por cobertura, motivos económicos, etc. 
+            
+```{r, fig.width=12, fig.height=4}
+#Graficos  "FAMI_TIENEINTERNET"
+           
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENEINTERNET)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "NO", "SI"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#2A00FF")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"El hogar cuenta con internet?")+
+  coord_flip()
+```
+
+El 54.3% del total de los encuestados tienen en su hogar servicio de Internet, mientras que el 41.1% no cuenta con este servicio y el 4.6% no respondió.
+
+\vspace{0.5cm}
+
+**El hogar tiene servicio a TV (FAMI_TIENESERVICIOTV)**  
+
+Esta pregunta se realiza a los encuestados con el fin de conocer con que tipo de comodidades cuentan en su hogar, ya que esto implica un gasto y conocer en cúantos de estos hogares cuentan con el servicio de televisión. 
+
+```{r, fig.width=12, fig.height=4}
+#Graficos "FAMI_TIENESERVICIOTV"
+           
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENESERVICIOTV)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "NO", "SI"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#FF99FF")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"El hogar tiene servicio a TV ?")+
+  coord_flip()
+```
+
+El 70.8% del total de los encuestados cuentan en su hogar con servicio de televisión, mientras que el 24.2% no cuenta con este servicio y el 5% no respondió.
+
+\vspace{0.5cm}
+
+**¿Tiene Automóvil? (FAMI_TIENEAUTOMOVIL)**
+
+El hecho que una familia posea dentro de su patrimonio un automóvil, indica que tiene la posibilidad de costear los gasto que este conlleva, entre ellos, la gasolina, mantenimientos, reparaciones, impuestos, entre otros. Esto quiere decir, que en general, una familia con automóvil particular tiene más ingresos que una la cual no tiene.
+
+El espacio muestral de FAMI_TIENEAUTOMOVIL está dado por las respuestas "Si", "No" y NA que representa la acción de no responder a la pregunta.
+
+```{r}
+#Graficos FAMI_TIENEAUTOMOVIL.
+
+propFTA <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENEAUTOMOVIL)))
+summaryFTA <- data.frame("Respuesta" = c("NA", "No", "Si"),
+                         "Proporcion" = propFTA)
+
+ggplot(data=summaryFTA, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill=c('#FFC300', '#FF5733', '#C70039'))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=0.1, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Familias con Automóvil")+
+  coord_flip()
+```
+
+El 76.6% de la población que presentó la prueba, no posee vehículo particular en su hogar, el 21.5% si posee, y solo el 1.9% no respondió a la pregunta. Es decir, la mayoría de los estudiantes que presentaron la prueba Icfes Saber 11 en el año 2017-2 no poseen vehículo en su hogar.
+
+\vspace{0.5cm}
+
+**¿Tiene Motocicleta? (FAMI_TIENEMOTOCICLETA)**
+
+El hecho que una familia posea dentro de su patrimonio una motocicleta, indica que tiene la posibilidad de costear los gasto que esta conlleva, entre ellos, el combustible, mantenimientos, reparaciones, impuestos, entre otros. Esto quiere decir, que en general, una familia con motocicleta tiene más ingresos que una la cual no tiene. 
+
+En Colombia, se espera, que en comparación con la posesión de automoviles, una mayor parte de hogares posean motocicletas, pues esta representa una herramienta de transporte y de trabajo muy usual. 
+
+El espacio muestral de FAMI_TIENEMOTOCICLETA está dado por las respuestas "Si", "No" y NA que representa la acción de no responder a la pregunta.
+
+```{r}
+#Graficos FAMI_TIENEMOTOCICLETA.
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENEMOTOCICLETA)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "No", "Si"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill=c('#FFC300', '#FF5733', '#C70039'))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=0.1, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Familias con Motocicleta")+
+  coord_flip()
+```
+
+Como era de esperarse, la proporción de hogares que poseen motocicleta es mayor a la proporción de hogares que poseen automóvil. Un 38.4% de la población que realizó la prueba posee motocicleta en su hogar, mientras que el 59.9% si posee y solo el 1.6% de los estudiantes no respondieron a la pregunta.
+
+\vspace{0.5cm}
+
+**¿Tiene Consola de Videojuegos? (FAMI_TIENECONSOLAVIDEOJUEGOS)**
+
+Poseer una consola de videojuegos actualmente se considera un lujo, pues no representa una necesidad para su usuario, sino más bien una herramienta de distracción para pasar el tiempo libre. Por otra parte, puede incrementar los precios de gasto de electricidad e internet en los hogares y probablemente un gasto en artículos compatibles para la misma como juegos, suscripciones a servicios y paquetes. 
+
+El espacio muestral de FAMI_TIENECONSOLAVIDEOJUEGOS está dado por las respuestas "Si", "No" y NA que representa la acción de no responder a la pregunta.
+
+```{r}
+#Gráficos FAMI_TIENECONSOLAVIDEOJUEGOS.
+
+propFTCV <- as.numeric(prop.table(table(dataIcfes$FAMI_TIENECONSOLAVIDEOJUEGOS)))
+summaryFTCV <- data.frame("Respuesta" = c("NA", "No", "Si"),
+                         "Proporcion" = propFTCV)
+
+ggplot(data=summaryFTCV, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill=c('#FFC300', '#FF5733', '#C70039'))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=0.1, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Familias con Consola de Videojuegos")+
+  coord_flip()
+```
+
+Un 77.1% de estudiantes posee una consola de videojuegos, mientras que un 21% no. Solo un 1.8% de estudiantes no respondieron a la pregunta.
+
+\vspace{0.5cm}
+
+**Número de libros en el hogar (FAMI_NUMLIBROS)**
+
+La lectura es una de las enseñanzas que todo padre quiere transmitir a sus hijos. Los más pequeños de la casa pueden beneficiarse de estas habilidades de múltiples formas, desde poder vivir increíbles aventuras en otros mundos, hasta comprender el texto que frente a ellos se exhibe en el colegio y poder tener un mayor éxito escolar en los exámenes
+
+Pese a lo anterior, en Colombia no existe una cúltura de la lectura y los salarios no permiten que las familias realicen una inversión fuerte en materiales bibliográficos de literatura o educación. Los datos de la encuenta se muestran resumidos a continuación:
+
+El espacio muestral de FAMI_NUMLIBROS está dado por las respuestas "0 A 10 LIBROS", "11 A 25 LIBROS", "26 A 100 LIBROS", "MÁS DE 100 LIBROS" y NA que representa la acción de no responder a la pregunta.
+
+```{r}
+#Graficos FAMI_NUMLIBROS.
+
+propFNL <- as.numeric(prop.table(table(dataIcfes$FAMI_NUMLIBROS)))
+summaryFNL <- data.frame("Respuesta" = c("NA", "0 A 10 LIBROS", "11 A 25 LIBROS",
+                                         "26 A 100 LIBROS", "MÁS DE 100 LIBROS"),
+                         "Proporcion" = propFNL)
+
+ggplot(data=summaryFNL, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", 
+           fill=c('#042940', '#005C53', '#9FC131', '#DBF227', '#D6D58E'))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.1, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Número de libros en el Hogar")+
+  coord_flip()
+```
+
+El 40.2% de los estudiante poseen entre 0 y 10 libros en su hogar, el 29.1% entre 11 y 25 libros, el 19.4% entre 26 y 100 libros y solo el 6.7% más de 100 libros. El resto de la población no respondió a la pregunta (un 4.6%).
+
+\vspace{0.5cm}
+
+**Trabajo o Labor del Padre (FAMI_TRABAJOLABORPADRE)**
+
+Esta pregunta se realiza a los encuestados pues la mayoría en dicha etapa aun dependen económicamente de sus padres. En general, los ingresos de un hogar se ven determinados por el tipo de trabajo que posean las cabezas de familia.
+
+El espacio muestral de FAMI_TRABAJOLABORPADRE está dado por las respuestas:
+
+- "Trabaja por cuenta propia (por ejemplo plomero, electricista)".
+- "Es operario de máquinas o conduce vehículos (taxista, chofer)".
+- "Es dueño de un negocio grande, tiene un cargo de nivel directivo o gerencial".
+- "Trabaja como personal de limpieza, mantenimiento, seguridad o construcción".
+- "Es agricultor, pesquero o jornalero".
+- "Es dueño de un negocio pequeño (tiene pocos empleados o no tiene, por ejemplo tienda, papelería, etc)".
+- "Es vendedor o trabaja en atención al público".
+- "Trabaja en el hogar, no trabaja o estudia".
+- "Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)".
+- "Trabaja como profesional (por ejemplo médico, abogado, ingeniero)".
+- "Pensionado".
+- "No sabe".
+- "No aplica".
+- NA.
+
+Se renombraran dichas respuestas para facilitar la realización de gráficos de la siguiente manera:
+
+- Independiente.
+- Operario.
+- Directivo.
+- Personal mantenimiento.
+- Agricultor.
+- Dueño negocio. 
+- Vendedor.
+- Hogar.
+- Auxiliar.
+- Profesional.
+- Pensionado.
+- No sabe.
+- No aplica.
+- NA.
+
+```{r}
+#Graficos FAMI_TRABAJOLABORPADRE.
+
+propFTP <- as.numeric(prop.table(table(dataIcfes$FAMI_TRABAJOLABORPADRE)))
+summaryFTP <- data.frame("Respuesta" = c("NA", "Agricultor", "Directivo",
+                                         "Dueño negocio", "Operario", "Vendedor", "No aplica",
+                                         "No sabe", "Pensionado", "Auxiliar", 
+                                         "Personal mantenimiento", "Profesional", "Hogar",
+                                         "Independiente"),
+                         "Proporcion" = propFTP)
+
+ggplot(data=summaryFTP, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#008C72")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Trabajo Labor del Padre")+
+  coord_flip()
+```
+
+Los 3 trabajos o labores más comunes entre los padres de los encuestados son: 
+
+- Agricultor, pesquero o jornalero con un 14.2%.
+- Trabaja por cuenta propia (por ejemplo, plomero, electricista) con un 11.2%.
+- Es operario de máquinas o conduce vehículos (taxista, chofer) con un 10.5%.
+
+En contraposición con los 3 trabajos o labores menos comunes:
+
+- Pensionado con un 2.3%.
+- Es dueño de un negocio grande, tiene un cargo de nivel directivo o gerencial con un 2.3%.
+- Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente) con un 4.4%.
+
+Solo el 7.3% de los padres de los encuestados ejercen su profesión, el 8.6% no tienen un padre y el 2.1% de estudiantes no respondieron a la pregunta.
+
+
+\vspace{0.5cm}
+
+**Trabajo o Labor de la Madre (FAMI_TRABAJOLABORMADRE)**
+
+Esta pregunta se realiza a los encuestados pues la mayoría en dicha etapa aun dependen económicamente de sus padres. En general, los ingresos de un hogar se ven determinados por el tipo de trabajo que posean las cabezas de familia.
+
+El espacio muestral de FAMI_TRABAJOLABORMADRE está dado por las respuestas:
+
+- "Trabaja por cuenta propia (por ejemplo plomero, electricista)".
+- "Es operario de máquinas o conduce vehículos (taxista, chofer)".
+- "Es dueño de un negocio grande, tiene un cargo de nivel directivo o gerencial".
+- "Trabaja como personal de limpieza, mantenimiento, seguridad o construcción".
+- "Es agricultor, pesquero o jornalero".
+- "Es dueño de un negocio pequeño (tiene pocos empleados o no tiene, por ejemplo tienda, papelería, etc)".
+- "Es vendedor o trabaja en atención al público".
+- "Trabaja en el hogar, no trabaja o estudia".
+- "Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)".
+- "Trabaja como profesional (por ejemplo médico, abogado, ingeniero)".
+- "Pensionado".
+- "No sabe".
+- "No aplica".
+- NA.
+
+Se renombraran dichas respuestas para facilitar la realización de gráficos de la siguiente manera:
+
+- Independiente.
+- Operario.
+- Directivo.
+- Personal mantenimiento.
+- Agricultor.
+- Dueño negocio. 
+- Vendedor.
+- Hogar.
+- Auxiliar.
+- Profesional.
+- Pensionado.
+- No sabe.
+- No aplica.
+- NA.
+
+```{r}
+#Graficos FAMI_TRABAJOLABORMADRE.
+
+propFTM <- as.numeric(prop.table(table(dataIcfes$FAMI_TRABAJOLABORMADRE)))
+summaryFTM <- data.frame("Respuesta" = c("NA", "Agricultor", "Directivo",
+                                         "Dueño negocio", "Operario", "Vendedor", "No aplica",
+                                         "No sabe", "Pensionado", "Auxiliar", 
+                                         "Personal mantenimiento", "Profesional", "Hogar",
+                                         "Independiente"),
+                         "Proporcion" = propFTM)
+
+ggplot(data=summaryFTM, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#400036")+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Trabajo Labor de la Madre")+
+  coord_flip()
+```
+
+Los 3 trabajos o labores más comunes entre las madres de los encuestados son: 
+
+- Trabaja en el hogar, no trabaja o estudia con un 41.5%.
+- Es dueño de un negocio pequeño con un 8.4%.
+- Trabaja como personal de limpieza, mantenimiento, seguridad o construcción con un 8.3%.
+
+Solo el 7.2% de las madres de los encuestados ejercen su profesión, el 4.9% no tienen una madre y el 1.8% de estudiantes no respondieron a la pregunta.
+
+
+\vspace{0.5cm}
+
+**Naturaleza del Colegio (COLE_NATURALEZA)**
+
+Un colegio oficial pueden definirse como una asociacion de carácter educativo cuyos miembros son personas que desarrollan una actividad de enseñanza liberal amparadas por el Estado. Su principal sello distintivo es ese desempeño de funciones público-privadas. 
+
+En Colombia se les llama colegios oficiales o colegios públicos a los colegios del gobierno o del Estado colombiano. A Los que no son del gobierno y pertenecen a particulares se les llama colegios privados.
+
+El espacio muestral de COLE_NATURALEZA está dado por: "OFICIAL" y "NO OFICIAL".
+
+```{r}
+#Graficos COLE_NATURALEZA.
+
+propCN <- as.numeric(prop.table(table(dataIcfes$COLE_NATURALEZA)))
+summaryCN <- data.frame("Naturaleza" = c("NO OFICIAL", "OFICIAL"),
+                        "Proporcion" = propCN)
+
+ggplot(data=summaryCN, aes(x=Naturaleza, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = c("#263B40", "#77A1A6"))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.05, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Naturaleza de los colegios")+
+  coord_flip()
+```
+
+El gráfico anterior muestra que la mayoría de colegios son de naturaleza oficial. Siendo más precisos un 75.3% de los colegios que presentaron la prueba son oficiales, mientras que un 24.7% son no oficiales.
+
+
+\vspace{0.5cm}
+
+**¿El colegio es Bilingüe? (COLE_BILINGUE)**
+
+Los colegios bilingües son aquellos que ofrecen una educación orientada al aprendizaje de una lengua extranjera, con un alto contacto de los estudiantes con la misma: más 50% de su currículo se desarrolla en ella. Un colegio bilingue representa una calidad en la educación superior a los colegios convencionales, normalmente son de carácter privado y representan un costo de matricula y sostenimiento mayor a los demás colegios. 
+
+El espacio muestral de COLE_BILINGUE está dado por: "N", "S" y NA.
+
+```{r}
+#Graficos COLE_BILINGUE.
+
+propCB <- as.numeric(prop.table(table(dataIcfes$COLE_BILINGUE)))
+summaryCB <- data.frame("Respuesta" = c("NA","NO", "SI"),
+                        "Proporcion" = propCB)
+
+ggplot(data=summaryCB, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = c("#02735E", "#038C3E", "#0CF25D"))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=0.1, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Colegios Bilingües")+
+  coord_flip()
+```
+
+
+\vspace{0.5cm}
+
+**Carácter del Colegio (COLE_CARACTER.)**
+
+En el bachillerato académico, los planes de estudio se encuentran orientados en el campo específico de las ciencias, las artes o las humanidades, y en el bachillerato técnico, se incorporan asignaturas cuyo contenido están orientadas en la formación teórica y práctica y lo más avanzado de la ciencia y de la técnica en lo relacionado a un estudio determinado. 
+
+Para el logro de los objetivos de la educación media académica son obligatorias y fundamentales las mismas áreas de la educación básica en un nivel más avanzado, las instituciones educativas organizan los programas de tal manera que los estudiantes puedan intensificar, entre otros en ciencias naturales, ciencias sociales, humanidades, arte o lenguas extranjeras, de acuerdo con su vocación e intereses, como orientación a la carrera que vayan a escoger en la educación superior.
+
+El espacio muestral de COLE_CARACTER está dado por: "ACADÉMICO", "TÉCNICO", "TÉCNICO/ACADÉMICO", "NO APLICA" y NA.
+
+```{r}
+#Graficos COLE_CARACTER.
+
+propCC <- as.numeric(prop.table(table(dataIcfes$COLE_CARACTER)))
+summaryCC <- data.frame("Respuesta" = c("NA","ACADEMICO", "NO APLICA", "TECNICO",
+                                        "TECNICO/ACADEMICO"),
+                        "Proporcion" = propCC)
+
+ggplot(data=summaryCC, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = c("#034159", "#025951", "#02735E",
+                                     "#038C3E", "#0CF25D"))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=0.2, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Carácter de los Colegios")+
+  coord_flip()
+```
+
+El 53.3% de los colegios que presentaron la prueba son de carácter académico, el 10.8% son de carácter técnico y el 33.5% son técnico-académicos.
+
+El 0.9% de las respuestas no aplican en ninguna categoría y el 0.016 no respondieron dicha pregunta.
+
+
+\vspace{0.5cm}
+
+**Carácter del Colegio (COLE_AREA_UBICACION.)**
+
+En la mayoría de los países y economías, los estudiantes que asisten a escuelas en áreas urbanas obtienen mejores resultados respecto de otros estudiantes. El estatus socioeconómico explica sólo una parte de la diferencia en el rendimiento de los estudiantes que asisten a escuelas urbanas y otros estudiantes. Las escuelas en zonas urbanas son más grandes, tienden a beneficiarse de mejores recursos educativos, y generalmente pueden ejercer mayor autonomía en la asignación de dichos recursos.
+
+El espacio muestral de COLE_CARACTER está dado por: "URBANO" y "RURAL"
+
+```{r}
+#Graficos COLE_AREA_UBICACION.
+
+propCAU <- as.numeric(prop.table(table(dataIcfes$COLE_AREA_UBICACION)))
+summaryCAU <- data.frame("Respuesta" = c("RURAL", "URBANO"),
+                         "Proporcion" = propCAU)
+
+ggplot(data=summaryCAU, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = c("#034159", "#025951"))+
+  geom_text(aes(label=round(Proporcion,3)), hjust=-0.1, color="black", size=3.5)+
+  theme_linedraw()+
+  facet_grid(~"Carácter de los Colegios")+
+  coord_flip()
+```
+
+El 85% de los estudiantes que presentaros las pruebas saber 11 en el año 2017 semestre 2, son de colegios urbanos. Solo el 15% son de colegios ubicados en zonas rurales. 
+
+
+\vspace{0.5cm}
+
+**Departamento de ubicación del Colegio (COLE_DEPTO_UBICACION.)**
+
+La Constitución de 1991 establece a Colombia como una república unitaria y descentralizada que se divide administrativa y políticamente en 33 divisiones: 32 departamentos, los cuales son gobernados desde sus respectivas ciudades capitales, y un distrito capital, Bogotá. Los departamentos forman áreas culturales y económicas dentro de las regiones geográficas. 
+
+Dichos departamentos son:
+
+- AMAZONAS.
+- ANTIOQUIA.
+- ARAUCA.
+- ATLÁNTICO.
+- BOGOTÁ.
+- BOLÍVAR.
+- BOYACÁ.
+- CALDAS.
+- CAQUETÁ.
+- CASANARE.
+- CAUCA.
+- CESAR.
+- CHOCÓ.
+- CÓRDOBA.
+- CUNDINAMARCA.
+- GUAINÍA.
+- GUAVIARE.
+- HUILA.
+- LA GUAJIRA.
+- MAGDALENA.
+- META.
+- NARIÑO.
+- NORTE SANTANDER. 
+- PUTUMAYO.
+- QUINDÍO.
+- RISARALDA.
+- SAN ANDRÉS.
+- SANTANDER.
+- SUCRE.
+- TOLIMA.
+- VALLE.
+- VAUPÉS.
+- VICHADA.
+
+La proporción de estudiantes que presentaron las pruebas saber 11 en el segundo semestre del año 2017, se muestran a continuación:
+
+```{r}
+#Graficos COLE_DEPTO_UBICACION.
+propCDP <- as.numeric(prop.table(table(dataIcfes$COLE_DEPTO_UBICACION)))
+summaryCDP <- data.frame("Respuesta" = sort(unique(dataIcfes$COLE_DEPTO_UBICACION)),
+                         "Proporcion" = propCDP)
+
+ggplot(data=summaryCDP, aes(x=Respuesta, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#BF1304")+
+  geom_text(aes(label=round(Proporcion,4)), hjust=0, color="black", size=2)+
+  theme_linedraw(base_size = 7)+
+  facet_grid(~"Departamento de ubicación del Colegio")+
+  coord_flip()
+```
+
+Los 5 departamentos de más participación en las pruebas son:
+
+- Bogotá con un 16.19% del total.
+- Antioquia con un 13.4% del total.
+- Valle con un 7.11% del total.
+- Cundinamarca con un 6.73% del total.
+- Atlántico con un 5.76% del total.
+
+\newpage
+
+\section{Estratificación}
+En esta sección se desarrollará paso a paso la forma en la cual se determinaron diez estratos los cuales denotarán un nivel específo de poder económico y riqueza para los estudiantes que presentaron las pruebas Icfes saber 11 en segundo semestre del año 2017.
+
+Los estratos estarán representados por los números del 1 al 10, donde 1 refleja el nivel de riqueza más bajo y 10 el nivel de riqueza más alto.
+
+El objetivo principal es construir un sistema de puntaje teniendo en cuenta las variables analizadas en la sección anterior, las cuales fueron seleccionadas de tal manera que ayudarán a determinar o tuvieran cierto tipo de relación consecuente con los medios económicos, culturales y de riqueza que un estudiante posea o convive en su cotidianidad. 
+
+Como paso inicial, se le otorgará un peso a cada variable, el cual indicará el nivel de importancia que esta posea en el puntaje final. Dichos pesos se muestran a continuación:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Variable}            & \textbf{Peso} \\ \hline
+(a) ESTU-DEPTO-RESIDE            & 4\%            \\ \hline
+(b) FAMI-EDUCACIONPADRE          & 7\%            \\ \hline
+(c) FAMI-EDUCACIONMADRE          & 7\%            \\ \hline
+(d) FAMI-ESTRATOVIVIENDA         & 6\%            \\ \hline
+(e) FAMI-TIENECOMPUTADOR         & 3\%            \\ \hline
+(f) FAMI-TIENELAVADORA           & 3\%            \\ \hline
+(g) FAMI-TIENEHORNOMICROOGAS     & 3\%            \\ \hline
+(h) FAMI-TIENEINTERNET           & 3\%            \\ \hline
+(i) FAMI-TIENESERVICIOTV         & 2\%            \\ \hline
+(j) FAMI-TIENEAUTOMOVIL          & 8\%            \\ \hline
+(k) FAMI-TIENEMOTOCICLETA        & 5\%            \\ \hline
+(l) FAMI-TIENECONSOLAVIDEOJUEGOS & 3\%            \\ \hline
+(m) FAMI-NUMLIBROS               & 7\%            \\ \hline
+(n) FAMI-TRABAJOLABORPADRE       & 7\%            \\ \hline
+(o) FAMI-TRABAJOLABORMADRE       & 7\%            \\ \hline
+(p) COLE-NATURALEZA              & 4\%            \\ \hline
+(q) COLE-BILINGUE                & 7\%            \\ \hline
+(r) COLE-CARACTER                & 5\%            \\ \hline
+(s) COLE-AREA-UBICACION          & 4\%            \\ \hline
+(t) COLE-DEPTO-UBICACION         & 5\%            \\ \hline
+\end{tabular}
+\end{table}
+
+También, se le asignará un puntaje de 0 a 10 a la respuesta que cada variable posea en cada observación. Dichas reglas de puntuación se presentan a continuación:
+
+\newpage
+
+**ESTU_DEPTO_RESIDE**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta}       & \textbf{Puntaje} \\ \hline
+EXTRANJERO               & 10               \\ \hline
+BOGOTÁ                   & 10               \\ \hline
+ANTIOQUIA                & 10               \\ \hline
+VALLE                    & 9                \\ \hline
+SANTANDER                & 7                \\ \hline
+CUNDINAMARCA             & 7                \\ \hline
+ATLÁNTICO                & 4                \\ \hline
+BOLIVAR                  & 4                \\ \hline
+META                     & 3                \\ \hline
+BOYACÁ                   & 5                \\ \hline
+TOLIMA                   & 2                \\ \hline
+CAUCA                    & 2                \\ \hline
+CÓRDOBA                  & 2                \\ \hline
+RISARALDA                & 2                \\ \hline
+CALDAS                   & 2                \\ \hline
+HUILA                    & 2                \\ \hline
+CESAR                    & 2                \\ \hline
+NORTE DE SANTANDER       & 2                \\ \hline
+NARIÑO                   & 2                \\ \hline
+MAGDALENA                & 2                \\ \hline
+CASANARE                 & 2                \\ \hline
+QUINDÍO                  & 2                \\ \hline
+SUCRE                    & 2                \\ \hline
+LA GUAJIRA               & 2                \\ \hline
+ARAUCA                   & 2                \\ \hline
+CHOCÓ                    & 2                \\ \hline
+CAQUETÁ                  & 2                \\ \hline
+PUTUMAYO                 & 2                \\ \hline
+SAN ANDRÉS Y PROVIDENCIA & 2                \\ \hline
+AMAZONAS                 & 1                \\ \hline
+GUAVIARE                 & 1                \\ \hline
+GUAÍNIA                  & 1                \\ \hline
+VICHADA                  & 1                \\ \hline
+VAUPÉS                   & 1                \\ \hline
+NA                       & 0                \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+**FAMI_EDUCACIONPADRE y FAMI_EDUCACIONMADRE**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta}                   & \textbf{Puntaje} \\ \hline
+Ninguno                              & 1                \\ \hline
+Primaria incompleta                  & 2                \\ \hline
+Primaria completa                    & 2                \\ \hline
+Secundaria (Bachillerato) incompleta & 3                \\ \hline
+Secundaria (Bachillerato) completa   & 5                \\ \hline
+Técnica o tecnológica incompleta     & 5                \\ \hline
+Técnica o tecnológica completa       & 7                \\ \hline
+Educación profesional incompleta     & 6                \\ \hline
+Educación profesional completa       & 9                \\ \hline
+Postgrado                            & 10               \\ \hline
+No sabe                              & 1                \\ \hline
+No Aplica                            & 1                \\ \hline
+NA                                   & 0                \\ \hline
+\end{tabular}
+\end{table}        
+            
+\vspace{0.5cm}
+            
+**FAMI_ESTRATOVIVIENDA**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+Estrato 1          & 2                \\ \hline
+Estrato 2          & 3                \\ \hline
+Estrato 3          & 5                \\ \hline
+Estrato 4          & 6                \\ \hline
+Estrato 5          & 9                \\ \hline
+Estrato 6          & 10               \\ \hline
+Sin Estrato        & 1               \\ \hline
+NA                 & 0                \\ \hline
+\end{tabular}
+\end{table}
+           
+\vspace{0.5cm}           
+           
+**FAMI_NUMLIBROS**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+0 A 10 LIBROS      & 2.5               \\ \hline
+11 A 25 LIBROS     & 5               \\ \hline
+26 A 100 LIBROS    & 7.5               \\ \hline
+MÁS DE 100 LIBROS  & 10               \\ \hline
+NA                 & 0                \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage           
+
+**FAMI_TRABAJOLABORPADRE y FAMI_TRABAJOLABORMADRE**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta}     & \textbf{Puntaje} \\ \hline
+Directivo              & 9                \\ \hline
+Profesional            & 9                \\ \hline
+Dueño negocio          & 8                \\ \hline
+Independiente          & 8                \\ \hline
+Pensionado             & 8                \\ \hline
+Operario               & 7                \\ \hline
+Agricultor             & 6                \\ \hline
+Auxiliar               & 6                \\ \hline
+Vendedor               & 5                \\ \hline
+Personal mantenimiento & 5                \\ \hline
+Hogar                  & 2                \\ \hline
+No sabe                & 1                \\ \hline
+No aplica              & 1                \\ \hline
+NA                     & 0                \\ \hline
+\end{tabular}
+\end{table}
+           
+\vspace{0.5cm}  
+
+**COLE_NATURALEZA**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+OFICIAL            & 10               \\ \hline
+NO OFICIAL         & 5                \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+**COLE_BILINGUE**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+S                  & 10               \\ \hline
+N                  & 1                \\ \hline
+NA                 & 0                \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace{0.5cm}
+
+**COLE_CARACTER**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+TÉCNICO            & 10               \\ \hline
+TÉCNICO/ACADÉMICO  & 7.5              \\ \hline
+ACADÉMICO          & 5                \\ \hline
+NO APLICA          & 1                \\ \hline
+NA                 & 0                \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+**COLE_AREA_UBICACION**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+URBANO             & 10               \\ \hline
+RURAL              & 5                \\ \hline
+\end{tabular}
+\end{table}
+
+**COLE_DEPTO_UBICACION**
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta}       & \textbf{Puntaje} \\ \hline
+BOGOTÁ                   & 10               \\ \hline
+ANTIOQUIA                & 10               \\ \hline
+VALLE                    & 9                \\ \hline
+SANTANDER                & 7                \\ \hline
+CUNDINAMARCA             & 7                \\ \hline
+ATLÁNTICO                & 4                \\ \hline
+BOLIVAR                  & 4                \\ \hline
+META                     & 3                \\ \hline
+BOYACÁ                   & 5                \\ \hline
+TOLIMA                   & 2                \\ \hline
+CAUCA                    & 2                \\ \hline
+CÓRDOBA                  & 2                \\ \hline
+RISARALDA                & 2                \\ \hline
+CALDAS                   & 2                \\ \hline
+HUILA                    & 2                \\ \hline
+CESAR                    & 2                \\ \hline
+NORTE DE SANTANDER       & 2                \\ \hline
+NARIÑO                   & 2                \\ \hline
+MAGDALENA                & 2                \\ \hline
+CASANARE                 & 2                \\ \hline
+QUINDÍO                  & 2                \\ \hline
+SUCRE                    & 2                \\ \hline
+LA GUAJIRA               & 2                \\ \hline
+ARAUCA                   & 2                \\ \hline
+CHOCÓ                    & 2                \\ \hline
+CAQUETÁ                  & 2                \\ \hline
+PUTUMAYO                 & 2                \\ \hline
+SAN ANDRÉS Y PROVIDENCIA & 2                \\ \hline
+AMAZONAS                 & 1                \\ \hline
+GUAVIARE                 & 1                \\ \hline
+GUAÍNIA                  & 1                \\ \hline
+VICHADA                  & 1                \\ \hline
+VAUPÉS                   & 1                \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+Las variables:
+
+- FAMI_TIENECOMPUTADOR.
+- FAMI_TIENELAVADORA.
+- FAMI_TIENEHORNOMICROOGAS.
+- FAMI_TIENEINTERNET.
+- FAMI_TIENESERVICIOTV.
+- FAMI_TIENEAUTOMOVIL.
+- FAMI_TIENEMOTOCICLETA.
+- FAMI_TIENECONSOLAVIDEOJUEGOS.
+
+Se puntuarán según el siguiente criterio:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Respuesta} & \textbf{Puntaje} \\ \hline
+Si        & 10      \\ \hline
+No        & 1       \\ \hline
+NA        & 0       \\ \hline
+\end{tabular}
+\end{table}
+
+
+```{r}
+#Puntuacion de Estudiantes.
+
+puntaje <- function(datos, opciones, puntajes) {
+  p <- numeric()
+  aux <- match(datos, opciones)
+  
+  for (i in 1:length(aux)) {
+    p[i] <- puntajes[aux[i]]
+  }
+  
+  p
+}
+
+#-------------------------------------------------------------------------------
+
+#Puntaje ESTU_DEPTO_RESIDE.
+datosP1 <- dataIcfes$ESTU_DEPTO_RESIDE
+opcionesP1 <- sort(unique(datosP1))
+puntajesP1 <- c(0,1,10,2,4,10,4,5,2,2,2,2,2,2,2,7,10,1,1,2,2,2,3,2,2,2,2,2,2,7,2,2,9,1,1)
+P1 <- puntaje(datosP1, opcionesP1, puntajesP1) * 0.04
+
+#Puntaje FAMI_EDUCACIONPADRE.
+datosP2 <- dataIcfes$FAMI_EDUCACIONPADRE
+opcionesP2 <- sort(unique(datosP2))
+puntajesP2 <- c(0,9,6,1,1,1,10,2,2,5,3,7,6)
+P2 <- puntaje(datosP2, opcionesP2, puntajesP2) * 0.07
+
+#Puntaje  FAMI_EDUCACIONMADRE.
+datosP3 <- dataIcfes$FAMI_EDUCACIONMADRE
+P3 <- puntaje(datosP3, opcionesP2, puntajesP2) * 0.07
+
+#Puntaje FAMI_ESTRATOVIVIENDA.
+datosP4 <- dataIcfes$FAMI_ESTRATOVIVIENDA
+opcionesP4 <- sort(unique(datosP4))
+puntajesP4 <- c(0,2,3,5,6,9,10,1)
+P4 <- puntaje(datosP4, opcionesP4, puntajesP4) * 0.06
+
+#Puntaje FAMI_NUMLIBROS.
+datosP5 <- dataIcfes$FAMI_NUMLIBROS
+opcionesP5 <- sort(unique(datosP5))
+puntajesP5 <- c(0,2.5,5,7.5,10)
+P5 <- puntaje(datosP5, opcionesP5, puntajesP5) * 0.07
+
+#Puntaje FAMI_TRABAJOLABORPADRE.
+datosP6 <- dataIcfes$FAMI_TRABAJOLABORPADRE
+opcionesP6 <- sort(unique(datosP6))
+puntajesP6 <- c(0,6,9,8,7,5,1,1,8,6,5,9,2,8)
+P6 <- puntaje(datosP6, opcionesP6, puntajesP6) * 0.07
+
+#Puntaje FAMI_TRABAJOLABORMADRE.
+datosP7 <- dataIcfes$FAMI_TRABAJOLABORMADRE
+P7 <- puntaje(datosP7, opcionesP6, puntajesP6) * 0.07
+
+#Puntaje COLE_NATURALEZA.
+datosP8 <- dataIcfes$COLE_NATURALEZA
+opcionesP8 <- sort(unique(datosP8))
+puntajesP8 <- c(5,10)
+P8 <- puntaje(datosP8, opcionesP8, puntajesP8) * 0.04
+
+#Puntaje COLE_BILINGUE.
+datosP9 <- dataIcfes$COLE_BILINGUE
+opcionesP9 <- sort(unique(datosP9))
+puntajesP9 <- c(0,1,10)
+P9 <- puntaje(datosP9, opcionesP9, puntajesP9) * 0.07
+
+#Puntaje COLE_CARACTER.
+datosP10 <- dataIcfes$COLE_CARACTER
+opcionesP10 <- sort(unique(datosP10))
+puntajesP10 <- c(0,5,1,10,7.5)
+P10 <- puntaje(datosP10, opcionesP10, puntajesP10) * 0.05
+
+#Puntaje COLE_AREA_UBICACION.
+datosP11 <- dataIcfes$COLE_AREA_UBICACION
+opcionesP11 <- sort(unique(datosP11))
+puntajesP11 <- c(5,10)
+P11 <- puntaje(datosP11, opcionesP11, puntajesP11) * 0.04
+
+#Puntaje COLE_DEPTO_UBICACION.
+datosP12 <- dataIcfes$COLE_DEPTO_UBICACION
+opcionesP12 <- sort(unique(datosP12))
+puntajesP12 <- c(1,10,2,4,10,4,5,2,2,2,2,2,2,2,7,1,1,2,2,2,3,2,2,2,2,2,2,7,2,2,9,1,1)
+P12 <- puntaje(datosP12, opcionesP12, puntajesP12) * 0.05
+
+#Puntaje FAMI_TIENECOMPUTADOR.
+datosP13 <- dataIcfes$FAMI_TIENECOMPUTADOR
+opcionesP13 <- sort(unique(datosP13))
+puntajesP13 <- c(0,1,10)
+P13 <- puntaje(datosP13, opcionesP13, puntajesP13) * 0.03
+
+#FAMI_TIENELAVADORA.
+datosP14 <- dataIcfes$FAMI_TIENELAVADORA
+P14 <- puntaje(datosP14, opcionesP13, puntajesP13) * 0.03
+
+#FAMI_TIENEHORNOMICROOGAS.
+datosP15 <- dataIcfes$FAMI_TIENEHORNOMICROOGAS
+P15 <- puntaje(datosP15, opcionesP13, puntajesP13) * 0.03
+
+#FAMI_TIENEINTERNET.
+datosP16 <- dataIcfes$FAMI_TIENEINTERNET
+P16 <- puntaje(datosP16, opcionesP13, puntajesP13) * 0.03
+
+#FAMI_TIENESERVICIOTV.
+datosP17 <- dataIcfes$FAMI_TIENESERVICIOTV
+P17 <- puntaje(datosP17, opcionesP13, puntajesP13) * 0.02
+
+#FAMI_TIENEAUTOMOVIL.
+datosP18 <- dataIcfes$FAMI_TIENEAUTOMOVIL
+P18 <- puntaje(datosP18, opcionesP13, puntajesP13) * 0.08
+
+#FAMI_TIENEMOTOCICLETA.
+datosP19 <- dataIcfes$FAMI_TIENEMOTOCICLETA
+P19 <- puntaje(datosP19, opcionesP13, puntajesP13) * 0.05
+
+#FAMI_TIENECONSOLAVIDEOJUEGOS.
+datosP20 <- dataIcfes$FAMI_TIENECONSOLAVIDEOJUEGOS
+P20 <- puntaje(datosP20, opcionesP13, puntajesP13) * 0.03
+
+#-------------------------------------------------------------------------------
+
+#Puntaje TOTAL.
+
+Ptotal <- P1+P2+P3+P4+P5+P6+P7+P8+P9+P10+P11+P12+P13+P14+P15+P16+P17+P18+P19+P20
+
+#-------------------------------------------------------------------------------
+
+#Estratos.
+
+estRiqueza <- numeric()
+
+for (i in 1:length(Ptotal)) {
+  if (0 <= Ptotal[i] & Ptotal[i] < 1) { estRiqueza[i] <- 1}
+  else if (1 <= Ptotal[i] & Ptotal[i] < 2) {estRiqueza[i] <- 2}
+  else if (2 <= Ptotal[i] & Ptotal[i] < 3) {estRiqueza[i] <- 3}
+  else if (3 <= Ptotal[i] & Ptotal[i] < 4) {estRiqueza[i] <- 4}
+  else if (4 <= Ptotal[i] & Ptotal[i] < 5) {estRiqueza[i] <- 5}
+  else if (5 <= Ptotal[i] & Ptotal[i] < 6) {estRiqueza[i] <- 6}
+  else if (6 <= Ptotal[i] & Ptotal[i] < 7) {estRiqueza[i] <- 7}
+  else if (7 <= Ptotal[i] & Ptotal[i] < 8) {estRiqueza[i] <- 8}
+  else if (8 <= Ptotal[i] & Ptotal[i] < 9) {estRiqueza[i] <- 9}
+  else {estRiqueza[i] <- 10}
+}
+
+```
+
+Por lo tanto, el puntaje total que se le asignará a cada participante está dado por la ecuación:
+
+$$Puntaje = A \cdot X$$
+Donde $A$ representa el vector de puntajes, el i-ésimo elemento de $A$ representa el puntaje obtenido por el participante en la variable i y $X$ representa el vector de pesos para cada variable.
+
+A continuación se muestra un resumen de los estratos para los participantes que presentaron la prueba:
+
+```{r}
+#Graficos Estratificacion Riqueza Participantes.
+propestR <- as.numeric(prop.table(table(as.factor(estRiqueza))))
+summaryestR <- data.frame("Estrato" = sort(unique(as.factor(estRiqueza))),
+                         "Proporcion" = propestR)
+
+ggplot(data=summaryestR, aes(x=Estrato, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#024059")+
+  geom_text(aes(label=round(Proporcion,6)), hjust=0, color="black", size=2.5)+
+  theme_linedraw()+
+  facet_grid(~"Estratos de Riqueza para Participantes de la Prueba")+
+  coord_flip()
+```
+
+Los 5 Estratos de riqueza más comunes de los estudiantes que presentaron la Prueba Saber 11 en el segundo semestre del año 2017 son los siguientes: 
+
++ Estrato 5 con Aproximadamente el 29.16% del total de estudiantes. 
++ Estrato 6 con aproximadamente el 23.95%  del total de estudiantes.
++ Estrato 4 con aproximadamente el 22.27% del total de estudiantes  de los estudiantes.
++ Estrato 7 Aproximadamente el 12.78% del total de estudiantes.
++ Estrato 3 con aproximadamente el 5.96% del total de estudiantes.
+
+Sólo el 5.06% del total de  los estudiantes pertencen a un Estrato de Riqueza 8,9 o 10. Y aproximandamente el 0.8% del total de los estudiantes pertecen un Estrato de Riqueza 1 o 2. 
+
+\vspace{0.5cm}
+
+Para determinar el estrato de un colegio, se calcula la media de estratos de los estudiantes de dicha institución.
+
+Un resumen de de la proporción de colegios por estratos se muestra a continuación. Además, puede encontrar la lista de colegios que presentaron la prueba Saber 11 2017-2 y su respectivo estrato de riqueza en el Apéndice de la siguiente sección.
+
+```{r}
+#Graficos Estratificacion Riqueza Colegios. 
+
+datosCole <- data.frame("Colegio" = dataIcfes$COLE_NOMBRE_ESTABLECIMIENTO,
+                        "Estrato" = estRiqueza)
+
+colegios <- sort(unique(dataIcfes$COLE_NOMBRE_ESTABLECIMIENTO))
+estratocole <- numeric()
+
+for (i in 1:length(colegios)) {
+  aux <- datosCole[datosCole$Colegio==colegios[i],]
+  estratocole[i] <- round(mean(aux$Estrato),0)
+}
+
+write(x=t(cbind(colegios,estratocole)), file='EstratosxColegio.txt', ncolumns=2)
+
+propestRC <- as.numeric(prop.table(table(as.factor(estratocole))))
+summaryestRC <- data.frame("Estrato" = sort(unique(as.factor(estratocole))),
+                         "Proporcion" = propestRC)
+
+ggplot(data=summaryestRC, aes(x=Estrato, y=Proporcion))+
+  ylab("Frecuencia Relativa")+
+  geom_bar(stat="identity", fill = "#BF6415")+
+  geom_text(aes(label=round(Proporcion,6)), hjust=0, color="black", size=2.5)+
+  theme_linedraw()+
+  facet_grid(~"Estratos de Riqueza para Colegios de la Prueba")+
+  coord_flip()
+```
+
++ Aproximadamente el 88.24% de los estudiantes que presentaron la Prueba Saber 11 en el segundo semestre del año 2017, estaban matriculados en Colegios que están ubicados en el nivel 4, 5 o 6 del Estrato de Riqueza. Siendo el Estrato 5 el más común con un 36.3% del total de los Colegios, seguido por los estratos 4 y 6 con porcentajes del 28.06% y 23.8% respectivamente.
+
++ Mientras que el 1.82% del total de los Colegios pertencen a alguno de los Estratos de Riqueza 1,2,3. Y el 9.94% restante pertencen a los estratos 7,8,9 y 10.
+
+\newpage
+
+\section{Apéndice}
+
+En el siguiente repositorio de GitHub se encuentra el código de R en donde se realizó el cuerpo de la investigación:
+\url{https://github.com/jumartineze/Datos-Categ-ricos}
+
+\newpage
+
+\section{Fuentes}
+
++ \url{https://es.wikipedia.org/wiki/Anexo:Departamentos_de_Colombia_por_Producto_Interno_Bruto}
++ \url{https://www.dane.gov.co/index.php/servicios-al-ciudadano}
++ \url{https://www.semana.com/economia/macroeconomia/articulo/bogota-antioquia-y-valle-generaron-el-50-del-pib-de-colombia-en-2020/202137/}
++ \url{https://es.wikipedia.org/wiki/ICFES}
++ \url{http://www.icfesinteractivo.gov.co}
+
+
+
+
+
+
